@@ -1,16 +1,16 @@
 package com.stretchie.data.repository
 
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertNull
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 class PoseRepositoryTest {
 
     private lateinit var repository: PoseRepository
 
-    @Before
+    @BeforeEach
     fun setUp() {
         repository = PoseRepository()
     }
