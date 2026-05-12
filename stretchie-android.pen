@@ -3,21 +3,9 @@
   "children": [
     {
       "type": "frame",
-      "id": "bi8Au",
-      "x": -241,
-      "y": 749,
-      "name": "Frame",
-      "clip": true,
-      "width": 800,
-      "height": 241,
-      "fill": "#FFFFFF",
-      "layout": "none"
-    },
-    {
-      "type": "frame",
       "id": "i0fJu9",
-      "x": 0,
-      "y": 0,
+      "x": -122,
+      "y": -932,
       "name": "Main Screen",
       "width": 360,
       "height": 640,
@@ -28,30 +16,74 @@
       "children": [
         {
           "type": "frame",
-          "id": "rewNw",
-          "name": "Screenshot Placeholder",
-          "metadata": {
-            "type": "unsplash",
-            "username": "matt909",
-            "link": "https://unsplash.com/@matt909",
-            "author": "Alex Shaw"
-          },
-          "width": "fill_container",
-          "height": 300,
-          "fill": {
-            "type": "image",
-            "enabled": true,
-            "url": "https://images.unsplash.com/photo-1597460970375-1449df2fb73a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzgwMDYwMDN8&ixlib=rb-4.1.0&q=80&w=1080",
-            "mode": "fill"
-          },
-          "cornerRadius": 16
-        },
-        {
-          "type": "frame",
           "id": "Rs0Ev",
           "name": "Spacer",
           "width": "fill_container",
-          "height": "fill_container"
+          "height": 312,
+          "children": [
+            {
+              "type": "frame",
+              "id": "rewNw",
+              "name": "Screenshot Placeholder",
+              "metadata": {
+                "type": "unsplash",
+                "username": "matt909",
+                "link": "https://unsplash.com/@matt909",
+                "author": "Alex Shaw"
+              },
+              "width": "fill_container",
+              "height": 300,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1597460970375-1449df2fb73a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzgwMDYwMDN8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              },
+              "cornerRadius": 16
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "SyGEd",
+          "name": "header",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "rrIw4",
+              "name": "poseName",
+              "fill": "$on-surface",
+              "content": "Neck Stretch",
+              "fontFamily": "Inter",
+              "fontSize": 24,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "ivfNL",
+              "name": "routineProgress",
+              "fill": "#757575",
+              "content": "Pose 1 of 12",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "I1vnH",
+          "name": "mainArea",
+          "width": "fill_container",
+          "height": 69,
+          "layout": "vertical",
+          "gap": 40,
+          "justifyContent": "center",
+          "alignItems": "center"
         },
         {
           "type": "frame",
@@ -112,7 +144,7 @@
     {
       "type": "frame",
       "id": "gKPxE",
-      "x": 400,
+      "x": 739,
       "y": 0,
       "name": "Settings Screen",
       "width": 360,
@@ -146,7 +178,7 @@
           "name": "tabs",
           "width": "fill_container",
           "height": 48,
-          "fill": "#F5F5F5",
+          "fill": "#FFF3E0",
           "cornerRadius": 8,
           "children": [
             {
@@ -218,7 +250,7 @@
                   "id": "TY6Ur",
                   "name": "row1",
                   "width": "fill_container",
-                  "fill": "#FAFAFA",
+                  "fill": "#FFF8E1",
                   "cornerRadius": 12,
                   "gap": 12,
                   "padding": 12,
@@ -230,7 +262,7 @@
                       "name": "icon1",
                       "width": 40,
                       "height": 40,
-                      "fill": "#EDE7F6",
+                      "fill": "#FFE0B2",
                       "cornerRadius": 20,
                       "justifyContent": "center",
                       "alignItems": "center",
@@ -306,7 +338,7 @@
                   "id": "r163YD",
                   "name": "row2",
                   "width": "fill_container",
-                  "fill": "#FAFAFA",
+                  "fill": "#FFF8E1",
                   "cornerRadius": 12,
                   "gap": 12,
                   "padding": 12,
@@ -318,7 +350,7 @@
                       "name": "icon2",
                       "width": 40,
                       "height": 40,
-                      "fill": "#E8F5E9",
+                      "fill": "#F1F8E9",
                       "cornerRadius": 20,
                       "justifyContent": "center",
                       "alignItems": "center",
@@ -395,7 +427,7 @@
                   "id": "JMogp",
                   "name": "row3",
                   "width": "fill_container",
-                  "fill": "#FAFAFA",
+                  "fill": "#FFF8E1",
                   "cornerRadius": 12,
                   "gap": 12,
                   "padding": 12,
@@ -407,7 +439,7 @@
                       "name": "icon3",
                       "width": 40,
                       "height": 40,
-                      "fill": "#E3F2FD",
+                      "fill": "#E1F5FE",
                       "cornerRadius": 20,
                       "justifyContent": "center",
                       "alignItems": "center",
@@ -487,7 +519,7 @@
     {
       "type": "frame",
       "id": "B4xiq",
-      "x": 800,
+      "x": 1774,
       "y": 0,
       "name": "Settings - Other",
       "width": 360,
@@ -521,7 +553,7 @@
           "name": "tabs",
           "width": "fill_container",
           "height": 48,
-          "fill": "#F5F5F5",
+          "fill": "#FFF3E0",
           "cornerRadius": 8,
           "children": [
             {
@@ -594,7 +626,7 @@
               "id": "zl9Nq",
               "name": "soundOption1",
               "width": "fill_container",
-              "fill": "#FAFAFA",
+              "fill": "#FFF8E1",
               "cornerRadius": 12,
               "padding": 16,
               "justifyContent": "space_between",
@@ -627,7 +659,7 @@
               "id": "g8DTq",
               "name": "soundOption2",
               "width": "fill_container",
-              "fill": "#FAFAFA",
+              "fill": "#FFF8E1",
               "cornerRadius": 12,
               "padding": 16,
               "justifyContent": "space_between",
@@ -662,12 +694,12 @@
     {
       "type": "frame",
       "id": "HGDgj",
-      "x": 1200,
+      "x": 1266,
       "y": 0,
       "name": "Edit Pose Screen",
       "width": 360,
       "height": 640,
-      "fill": "#F5F5F5",
+      "fill": "#FFF3E0",
       "layout": "vertical",
       "gap": 24,
       "padding": 24,
@@ -716,7 +748,7 @@
               "name": "heroCircle",
               "width": 100,
               "height": 100,
-              "fill": "#EDE7F6",
+              "fill": "#FFE0B2",
               "cornerRadius": 50,
               "justifyContent": "center",
               "alignItems": "center",
@@ -766,7 +798,7 @@
                   "id": "qvEUU",
                   "name": "durationInput",
                   "width": "fill_container",
-                  "fill": "#FAFAFA",
+                  "fill": "#FFF8E1",
                   "cornerRadius": 12,
                   "padding": 16,
                   "justifyContent": "space_between",
@@ -837,7 +869,7 @@
                   "id": "qFyN8",
                   "name": "intervalInput",
                   "width": "fill_container",
-                  "fill": "#FAFAFA",
+                  "fill": "#FFF8E1",
                   "cornerRadius": 12,
                   "padding": 16,
                   "justifyContent": "space_between",
@@ -921,20 +953,49 @@
     },
     {
       "type": "frame",
-      "id": "a8tAfN",
-      "x": 1600,
-      "y": 0,
+      "id": "j8OESd",
+      "x": 335,
+      "y": -932,
       "name": "Active Routine Screen",
       "width": 360,
       "height": 640,
       "fill": "$background",
       "layout": "vertical",
-      "gap": 32,
+      "gap": 24,
       "padding": 24,
       "children": [
         {
           "type": "frame",
-          "id": "YMsOh",
+          "id": "rmGJl",
+          "name": "Spacer",
+          "width": "fill_container",
+          "height": 312,
+          "children": [
+            {
+              "type": "frame",
+              "id": "m3mr98",
+              "name": "Screenshot Placeholder",
+              "metadata": {
+                "type": "unsplash",
+                "username": "matt909",
+                "link": "https://unsplash.com/@matt909",
+                "author": "Alex Shaw"
+              },
+              "width": "fill_container",
+              "height": 300,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1597460970375-1449df2fb73a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzgwMDYwMDN8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              },
+              "cornerRadius": 16
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "hQqzg",
           "name": "header",
           "width": "fill_container",
           "layout": "vertical",
@@ -943,7 +1004,7 @@
           "children": [
             {
               "type": "text",
-              "id": "YcvZY",
+              "id": "wA0xl",
               "name": "poseName",
               "fill": "$on-surface",
               "content": "Neck Stretch",
@@ -953,7 +1014,7 @@
             },
             {
               "type": "text",
-              "id": "wO7pO",
+              "id": "c7EOir",
               "name": "routineProgress",
               "fill": "#757575",
               "content": "Pose 1 of 12",
@@ -965,10 +1026,10 @@
         },
         {
           "type": "frame",
-          "id": "Jhphk",
+          "id": "Nw3o0",
           "name": "mainArea",
           "width": "fill_container",
-          "height": "fill_container",
+          "height": 71,
           "layout": "vertical",
           "gap": 40,
           "justifyContent": "center",
@@ -976,36 +1037,26 @@
           "children": [
             {
               "type": "frame",
-              "id": "e6jQi2",
+              "id": "euUoe",
               "name": "heroCircle",
-              "width": 200,
-              "height": 200,
-              "fill": "#F5F5F5",
+              "width": 103,
+              "height": 106,
+              "fill": "#FFF3E0",
               "cornerRadius": 100,
               "justifyContent": "center",
               "alignItems": "center",
               "children": [
                 {
                   "type": "text",
-                  "id": "ak4A3",
+                  "id": "LXviI",
                   "name": "timerText",
                   "fill": "$primary",
                   "content": "25",
                   "fontFamily": "Inter",
-                  "fontSize": 80,
+                  "fontSize": 64,
                   "fontWeight": "normal"
                 }
               ]
-            },
-            {
-              "type": "icon_font",
-              "id": "UIGQL",
-              "name": "poseIcon",
-              "width": 48,
-              "height": 48,
-              "iconFontName": "accessibility",
-              "iconFontFamily": "Material Symbols Rounded",
-              "fill": "#BDBDBD"
             }
           ]
         },
@@ -1013,7 +1064,8 @@
           "type": "frame",
           "id": "tkeU5",
           "name": "controls",
-          "width": "fill_container",
+          "width": 311,
+          "height": 78,
           "gap": 40,
           "padding": 20,
           "justifyContent": "center",
@@ -1063,21 +1115,29 @@
               "fill": "$on-surface"
             }
           ]
-        },
-        {
-          "type": "frame",
-          "id": "cnEJU",
-          "name": "bottomNav",
-          "width": "fill_container",
-          "height": 40
         }
       ]
+    },
+    {
+      "type": "rectangle",
+      "id": "DdQpJ",
+      "x": -713,
+      "y": -1503,
+      "name": "App Logo",
+      "fill": {
+        "type": "image",
+        "enabled": true,
+        "url": "app-icon.png",
+        "mode": "fill"
+      },
+      "width": 445,
+      "height": 445
     }
   ],
   "variables": {
     "background": {
       "type": "color",
-      "value": "#FFFFFF"
+      "value": "#FFF3E0"
     },
     "on-primary": {
       "type": "color",
@@ -1089,7 +1149,7 @@
     },
     "primary": {
       "type": "color",
-      "value": "#6200EE"
+      "value": "#FF8008"
     },
     "surface": {
       "type": "color",
