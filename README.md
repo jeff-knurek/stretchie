@@ -50,20 +50,6 @@
 
 ---
 
-## Next Steps
-- Replace the placeholder UI with the **Routine Screen** and **Settings Screen** described in the implementation plan.
-- Add Pose assets under `app/src/main/res/drawable` and update `PoseRepository`.
-- Implement the Proto `user_settings.proto` and generate the DataStore classes.
-
----
-
-## Troubleshooting
-- **Gradle sync fails** – Ensure you have a stable internet connection and that the `gradle-wrapper.properties` points to a reachable Gradle distribution.
-- **Emulator won’t start** – Verify the HAXM/Hypervisor driver is installed (SDK Manager → SDK Tools → "Android Emulator").
-- **Missing JDK** – Install JDK 17 and set `File → Project Structure → SDK Location → JDK location`.
-
----
-
 ## License
 
 [MIT](LICENSE)
