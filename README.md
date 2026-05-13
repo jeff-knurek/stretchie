@@ -32,6 +32,29 @@
 
 ---
 
+## Adding New Poses
+
+To add a new static pose to the application, follow these steps:
+
+1. **Add the image asset**:
+   Place your image or illustration (e.g., `downward_dog.png`, `.jpg`, or an `.xml` vector drawable) into the project's drawable directory:
+   `app/src/main/res/drawable/`
+
+2. **Register the pose data**:
+   Open `app/src/main/java/com/stretchie/data/repository/PoseRepository.kt` and add a new `Pose` object to the list returned in the `getAllPoses()` method.
+
+   *Example:*
+   ```kotlin
+   Pose(
+       id = "downward_dog",
+       name = "Downward Dog",
+       imageRes = R.drawable.downward_dog,
+       defaultDurationSeconds = 30
+   )
+   ```
+
+---
+
 ## Testing
 ### Unit Tests
 - Located under `app/src/test/java/...`

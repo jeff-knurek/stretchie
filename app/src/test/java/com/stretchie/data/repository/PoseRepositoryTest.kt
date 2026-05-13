@@ -18,9 +18,11 @@ class PoseRepositoryTest {
     @Test
     fun `getAllPoses returns expected list`() {
         val poses = repository.getAllPoses()
-        assertEquals(1, poses.size)
+        assertEquals(2, poses.size)
         assertEquals("leg_extension", poses[0].id)
         assertEquals("Leg Extension", poses[0].name)
+        assertEquals("quad-stretch", poses[1].id)
+        assertEquals("Quad Stretch", poses[1].name)
     }
 
     @Test
