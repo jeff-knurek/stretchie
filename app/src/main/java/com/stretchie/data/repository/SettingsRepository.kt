@@ -51,4 +51,34 @@ class SettingsRepository(private val context: Context) {
                 .build()
         }
     }
+
+    suspend fun updatePoseOverride(poseId: String, isSkipped: Boolean, duration: Int, intervalCount: Int) {
+        context.userSettingsStore.updateData { currentSettings ->
+            val builder = currentSettings.toBuilder()
+            val poseSettings = com.stretchie.PoseSettings.newBuilder()
+                .setIsSkipped(isSkipped)
+                .setDuration(duration)
+                .setIntervalCount(intervalCount)
+                .build()
+            builder.putPoseOverrides(poseId, poseSettings)
+            builder.build()
+        }
+    }
+
+    suspend fun updatePoseChangeSound(uriString: String) {
+        context.userSettingsStore.updateData { currentSettings ->
+            currentSettings.toBuilder()
+                .setPoseChangeSound(uriString)
+                .build()
+        }
+    }
+
+    suspend fun updateCompletionSound(uriString: String) {
+        context.userSettingsStore.updateData { currentSettings ->
+            currentSettings.toBuilder()
+                .setIntervalSound(uriString) // wait, intervalSound was used for completion or interval breaks? 
+                // Let's use intervalSound for Completion for now since it is defined in user_settings.proto
+                .build()
+        }
+    }
 }

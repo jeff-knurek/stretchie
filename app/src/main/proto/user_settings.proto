@@ -4,6 +4,12 @@ package com.stretchie;
 
 option java_multiple_files = true;
 
+message PoseSettings {
+  bool isSkipped = 1;
+  int32 duration = 2;
+  int32 intervalCount = 3;
+}
+
 message UserSettings {
   // Sound to play for interval breaks
   string intervalSound = 1;
@@ -13,4 +19,7 @@ message UserSettings {
   int32 intervalCount = 3;
   // Length of each interval in seconds
   int32 intervalDuration = 4;
+
+  // Pose-specific overrides keyed by pose id
+  map<string, PoseSettings> poseOverrides = 5;
 }

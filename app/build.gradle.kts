@@ -64,6 +64,9 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview:1.6.8")
     implementation("androidx.compose.material3:material3:1.2.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.2")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation("androidx.compose.material:material-icons-extended:1.6.8")
+    implementation("androidx.tracing:tracing:1.2.0")
     
     // DataStore (Proto)
     implementation("androidx.datastore:datastore:1.1.1")
