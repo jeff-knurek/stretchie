@@ -136,8 +136,8 @@ class RoutineViewModelTest {
 
         viewModel.togglePlayPause() // Start
 
-        // First pose 10s + Second pose 10s = 20s total
-        advanceTimeBy(20001)
+        // First pose 10s + 2s transition + Second pose 10s = 22s total
+        advanceTimeBy(21501)
 
         val state = viewModel.state.value
         assertTrue(state.isCompleted)
@@ -175,8 +175,8 @@ class RoutineViewModelTest {
                 assertEquals(10, state.secondsRemaining)
                 verify(audioManager).playIntervalSound()
 
-                // Advance another 10s. It should transition to pose2.
-                advanceTimeBy(10001)
+                // Advance transition delay (1.5s) + second interval (10s) = 11.5s
+                advanceTimeBy(11501)
 
                 state = viewModel.state.value
                 assertEquals(1, state.currentPoseIndex)

@@ -100,7 +100,11 @@ class RoutineViewModel(
         timerJob?.cancel()
     }
 
-    private fun tick() {
+    private suspend fun playTransitionDelay() {
+        delay(1500L)
+    }
+
+    private suspend fun tick() {
         val currentState = _state.value
         if (currentState.secondsRemaining > 1) {
             _state.update { it.copy(secondsRemaining = it.secondsRemaining - 1) }
@@ -117,6 +121,7 @@ class RoutineViewModel(
                                 secondsRemaining = getDurationForPose(currentPose)
                         )
                     }
+                    playTransitionDelay()
                 } else {
                     if (currentState.currentPoseIndex < currentState.poses.size - 1) {
                         // next pose
@@ -132,6 +137,7 @@ class RoutineViewModel(
                                     secondsRemaining = getDurationForPose(nextPose)
                             )
                         }
+                        playTransitionDelay()
                     } else {
                         // last pose, end of routine
                         audioManager.playIntervalSound()
