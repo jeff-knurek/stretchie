@@ -9,7 +9,8 @@ data class RoutineState(
         val currentIntervalCount: Int = 1,
         val poses: List<Pose> = emptyList(),
         val secondsRemaining: Int = 0,
-        val isCompleted: Boolean = false
+        val isCompleted: Boolean = false,
+        val isTransitioning: Boolean = false
 ) {
     val currentPose: Pose?
         get() = poses.getOrNull(currentPoseIndex)

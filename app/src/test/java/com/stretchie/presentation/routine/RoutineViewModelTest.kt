@@ -140,9 +140,10 @@ class RoutineViewModelTest {
         advanceTimeBy(21501)
 
         val state = viewModel.state.value
-        assertTrue(state.isCompleted)
+        assertFalse(state.isCompleted)
         assertFalse(state.isRunning)
-        assertEquals(0, state.secondsRemaining)
+        assertEquals(10, state.secondsRemaining)
+        assertEquals(0, state.currentPoseIndex)
         verify(audioManager).playIntervalSound()
     }
 

@@ -14,6 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.animation.core.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -25,6 +27,18 @@ import com.stretchie.ui.theme.*
 fun MainScreen(viewModel: RoutineViewModel, onNavigateToSettings: () -> Unit) {
     val state by viewModel.state.collectAsState()
     val context = LocalContext.current
+
+    val infiniteTransition = rememberInfiniteTransition(label = "pulse")
+    val animatedScale by infiniteTransition.animateFloat(
+        initialValue = 1.0f,
+        targetValue = 1.2f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 750, easing = FastOutSlowInEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "scale"
+    )
+    val timerScale = if (state.isTransitioning) animatedScale else 1.0f
 
     DisposableEffect(state.isRunning) {
         val window = (context as? android.app.Activity)?.window
@@ -94,6 +108,10 @@ fun MainScreen(viewModel: RoutineViewModel, onNavigateToSettings: () -> Unit) {
 
         Text(
                 text = formatTime(state.secondsRemaining),
+                modifier = Modifier.graphicsLayer(
+                    scaleX = timerScale,
+                    scaleY = timerScale
+                ),
                 style =
                         MaterialTheme.typography.displayLarge.copy(
                                 fontSize = 80.sp,

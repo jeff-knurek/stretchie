@@ -96,12 +96,14 @@ class RoutineViewModel(
     }
 
     private fun pauseRoutine() {
-        _state.update { it.copy(isRunning = false) }
+        _state.update { it.copy(isRunning = false, isTransitioning = false) }
         timerJob?.cancel()
     }
 
     private suspend fun playTransitionDelay() {
+        _state.update { it.copy(isTransitioning = true) }
         delay(1500L)
+        _state.update { it.copy(isTransitioning = false) }
     }
 
     private suspend fun tick() {
