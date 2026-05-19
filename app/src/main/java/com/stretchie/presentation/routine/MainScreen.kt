@@ -186,7 +186,11 @@ fun IdleControls(onPlay: () -> Unit, onSettings: () -> Unit) {
 }
 
 private fun formatTime(seconds: Int): String {
-    val m = seconds / 60
-    val s = seconds % 60
-    return String.format("%02d:%02d", m, s)
+    return if (seconds > 99) {
+        val m = seconds / 60
+        val s = seconds % 60
+        String.format("%02d:%02d", m, s)
+    } else {
+        String.format("%02d", seconds)
+    }
 }
