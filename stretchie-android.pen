@@ -90,50 +90,132 @@
           "id": "F3JVM",
           "name": "Buttons",
           "width": "fill_container",
+          "layout": "vertical",
           "gap": 16,
           "justifyContent": "center",
+          "alignItems": "center",
           "children": [
             {
               "type": "frame",
               "id": "Ar2Og",
-              "name": "Play Button",
-              "width": 120,
-              "height": 48,
-              "fill": "$primary",
-              "cornerRadius": 24,
+              "name": "Controls Row",
+              "width": "fill_container",
+              "layout": "horizontal",
+              "gap": 16,
               "justifyContent": "center",
               "alignItems": "center",
               "children": [
                 {
-                  "type": "icon_font",
-                  "id": "dmuoy",
-                  "width": 24,
-                  "height": 24,
-                  "iconFontName": "play",
-                  "iconFontFamily": "lucide",
-                  "fill": "$on-primary"
+                  "type": "frame",
+                  "id": "pvBtn",
+                  "name": "Previous Button",
+                  "width": 48,
+                  "height": 48,
+                  "fill": "#E0E0E0",
+                  "cornerRadius": 24,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "pvIcon",
+                      "width": 24,
+                      "height": 24,
+                      "iconFontName": "skip_previous",
+                      "iconFontFamily": "lucide",
+                      "fill": "$on-surface"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "plBtn",
+                  "name": "Play Button",
+                  "width": 140,
+                  "height": 48,
+                  "fill": "$primary",
+                  "cornerRadius": 24,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "layout": "horizontal",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "plIcon",
+                      "width": 24,
+                      "height": 24,
+                      "iconFontName": "play_arrow",
+                      "iconFontFamily": "lucide",
+                      "fill": "$on-primary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "plTxt",
+                      "name": "Play Text",
+                      "fill": "$on-primary",
+                      "content": "Play",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "nxBtn",
+                  "name": "Next Button",
+                  "width": 48,
+                  "height": 48,
+                  "fill": "#E0E0E0",
+                  "cornerRadius": 24,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "nxIcon",
+                      "width": 24,
+                      "height": 24,
+                      "iconFontName": "skip_next",
+                      "iconFontFamily": "lucide",
+                      "fill": "$on-surface"
+                    }
+                  ]
                 }
               ]
             },
             {
               "type": "frame",
-              "id": "w8Q4b",
+              "id": "seBtn",
               "name": "Settings Button",
-              "width": 120,
+              "width": 140,
               "height": 48,
               "fill": "#E0E0E0",
               "cornerRadius": 24,
               "justifyContent": "center",
               "alignItems": "center",
+              "layout": "horizontal",
+              "gap": 8,
               "children": [
                 {
                   "type": "icon_font",
-                  "id": "OebRn",
+                  "id": "seIcon",
                   "width": 24,
                   "height": 24,
                   "iconFontName": "settings",
                   "iconFontFamily": "lucide",
                   "fill": "$on-surface"
+                },
+                {
+                  "type": "text",
+                  "id": "seTxt",
+                  "name": "Settings Text",
+                  "fill": "$on-surface",
+                  "content": "Settings",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "bold"
                 }
               ]
             }
