@@ -130,6 +130,8 @@ fun MainScreen(viewModel: RoutineViewModel, onNavigateToSettings: () -> Unit) {
         } else {
             IdleControls(
                     onPlay = { viewModel.togglePlayPause() },
+                    onPrevious = { viewModel.previousPose() },
+                    onNext = { viewModel.nextPose() },
                     onSettings = onNavigateToSettings
             )
         }
@@ -175,30 +177,56 @@ fun ActiveControls(onPause: () -> Unit, onNext: () -> Unit, onPrevious: () -> Un
 }
 
 @Composable
-fun IdleControls(onPlay: () -> Unit, onSettings: () -> Unit) {
-    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-        Button(
+fun IdleControls(onPlay: () -> Unit, onPrevious: () -> Unit, onNext: () -> Unit, onSettings: () -> Unit) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Previous button
+            IconButton(onClick = onPrevious) {
+                Icon(Icons.Rounded.SkipPrevious, contentDescription = "Previous", tint = OnSurface)
+            }
+            Spacer(modifier = Modifier.width(24.dp))
+
+            // Play button
+            Button(
                 onClick = onPlay,
                 modifier = Modifier.size(140.dp, 48.dp),
                 shape = RoundedCornerShape(24.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = OrangePrimary)
-        ) {
-            Icon(Icons.Rounded.PlayArrow, contentDescription = "Play", tint = OnPrimary)
-            Spacer(modifier = Modifier.width(8.dp))
-            Text("Play", color = OnPrimary, fontWeight = FontWeight.Bold)
+            ) {
+                Icon(Icons.Rounded.PlayArrow, contentDescription = "Play", tint = OnPrimary)
+                Spacer(modifier = Modifier.width(8.dp))
+                Text("Play", color = OnPrimary, fontWeight = FontWeight.Bold)
+            }
+
+            Spacer(modifier = Modifier.width(24.dp))
+            // Next button
+            IconButton(onClick = onNext) {
+                Icon(Icons.Rounded.SkipNext, contentDescription = "Next", tint = OnSurface)
+            }
         }
-
-        Spacer(modifier = Modifier.width(16.dp))
-
-        Button(
+        Spacer(modifier = Modifier.height(16.dp))
+        // Settings button on a separate row
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Button(
                 onClick = onSettings,
                 modifier = Modifier.size(140.dp, 48.dp),
                 shape = RoundedCornerShape(24.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Surface)
-        ) {
-            Icon(Icons.Rounded.Settings, contentDescription = "Settings", tint = OnSurface)
-            Spacer(modifier = Modifier.width(8.dp))
-            Text("Settings", color = OnSurface, fontWeight = FontWeight.Bold)
+            ) {
+                Icon(Icons.Rounded.Settings, contentDescription = "Settings", tint = OnSurface)
+                Spacer(modifier = Modifier.width(8.dp))
+                Text("Settings", color = OnSurface, fontWeight = FontWeight.Bold)
+            }
         }
     }
 }
