@@ -41,7 +41,8 @@ class RoutineViewModel(
 
     private fun getDurationForPose(pose: com.stretchie.data.model.Pose): Int {
         val override = currentSettings?.poseOverridesMap?.get(pose.id)
-        return if (override != null && override.duration > 0) override.duration else pose.defaultDurationSeconds
+        return if (override != null && override.duration > 0) override.duration
+        else pose.defaultDurationSeconds
     }
 
     private fun getIntervalCountForPose(pose: com.stretchie.data.model.Pose): Int {
@@ -62,11 +63,11 @@ class RoutineViewModel(
             val intervalCount = getIntervalCountForPose(firstPose)
             _state.update {
                 it.copy(
-                    poses = activePoses,
-                    currentPoseIndex = 0,
-                    currentInterval = 1,
-                    currentIntervalCount = intervalCount,
-                    secondsRemaining = duration
+                        poses = activePoses,
+                        currentPoseIndex = 0,
+                        currentInterval = 1,
+                        currentIntervalCount = intervalCount,
+                        secondsRemaining = duration
                 )
             }
         }
@@ -108,35 +109,34 @@ class RoutineViewModel(
             if (currentPose != null) {
                 val intervalCount = getIntervalCountForPose(currentPose)
                 if (currentState.currentInterval < intervalCount) {
+                    // next interval, same pose
                     audioManager.playIntervalSound()
                     _state.update {
                         it.copy(
-                            currentInterval = it.currentInterval + 1,
-                            secondsRemaining = getDurationForPose(currentPose)
+                                currentInterval = it.currentInterval + 1,
+                                secondsRemaining = getDurationForPose(currentPose)
                         )
                     }
                 } else {
                     if (currentState.currentPoseIndex < currentState.poses.size - 1) {
+                        // next pose
                         audioManager.playPoseChangeSound()
                         val nextIndex = currentState.currentPoseIndex + 1
                         val nextPose = currentState.poses[nextIndex]
                         val nextIntervalCount = getIntervalCountForPose(nextPose)
                         _state.update {
                             it.copy(
-                                currentPoseIndex = nextIndex,
-                                currentInterval = 1,
-                                currentIntervalCount = nextIntervalCount,
-                                secondsRemaining = getDurationForPose(nextPose)
+                                    currentPoseIndex = nextIndex,
+                                    currentInterval = 1,
+                                    currentIntervalCount = nextIntervalCount,
+                                    secondsRemaining = getDurationForPose(nextPose)
                             )
                         }
                     } else {
+                        // last pose, end of routine
                         audioManager.playIntervalSound()
                         _state.update {
-                            it.copy(
-                                isRunning = false,
-                                isCompleted = true,
-                                secondsRemaining = 0
-                            )
+                            it.copy(isRunning = false, isCompleted = true, secondsRemaining = 0)
                         }
                         timerJob?.cancel()
                     }
@@ -155,21 +155,15 @@ class RoutineViewModel(
 
             _state.update {
                 it.copy(
-                    currentPoseIndex = nextIndex,
-                    currentInterval = 1,
-                    currentIntervalCount = nextIntervalCount,
-                    secondsRemaining = duration
+                        currentPoseIndex = nextIndex,
+                        currentInterval = 1,
+                        currentIntervalCount = nextIntervalCount,
+                        secondsRemaining = duration
                 )
             }
         } else {
             audioManager.playIntervalSound()
-            _state.update {
-                it.copy(
-                    isRunning = false,
-                    isCompleted = true,
-                    secondsRemaining = 0
-                )
-            }
+            _state.update { it.copy(isRunning = false, isCompleted = true, secondsRemaining = 0) }
             timerJob?.cancel()
         }
     }
@@ -184,10 +178,10 @@ class RoutineViewModel(
 
             _state.update {
                 it.copy(
-                    currentPoseIndex = prevIndex,
-                    currentInterval = 1,
-                    currentIntervalCount = prevIntervalCount,
-                    secondsRemaining = duration
+                        currentPoseIndex = prevIndex,
+                        currentInterval = 1,
+                        currentIntervalCount = prevIntervalCount,
+                        secondsRemaining = duration
                 )
             }
         }
