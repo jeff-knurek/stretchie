@@ -25,7 +25,7 @@ import org.mockito.kotlin.verify
 class RoutineViewModelTest {
 
     private val testDispatcher = StandardTestDispatcher()
-    
+
     private lateinit var poseRepository: PoseRepository
     private lateinit var audioManager: AudioManager
     private lateinit var settingsRepository: SettingsRepository
@@ -37,18 +37,25 @@ class RoutineViewModelTest {
     fun setUp() {
         Dispatchers.setMain(testDispatcher)
 
-        val mockPoses = listOf(
-            Pose(id = "pose1", name = "Pose 1", imageRes = 1, defaultDurationSeconds = 10),
-            Pose(id = "pose2", name = "Pose 2", imageRes = 2, defaultDurationSeconds = 10)
-        )
+        val mockPoses =
+                listOf(
+                        Pose(
+                                id = "pose1",
+                                name = "Pose 1",
+                                imageRes = 1,
+                                defaultDurationSeconds = 10
+                        ),
+                        Pose(
+                                id = "pose2",
+                                name = "Pose 2",
+                                imageRes = 2,
+                                defaultDurationSeconds = 10
+                        )
+                )
 
-        poseRepository = mock {
-            on { getAllPoses() } doReturn mockPoses
-        }
+        poseRepository = mock { on { getAllPoses() } doReturn mockPoses }
         audioManager = mock()
-        settingsRepository = mock {
-            on { this.userSettingsFlow } doReturn userSettingsFlow
-        }
+        settingsRepository = mock { on { this.userSettingsFlow } doReturn userSettingsFlow }
     }
 
     @AfterEach
@@ -79,12 +86,12 @@ class RoutineViewModelTest {
 
         // Start routine
         viewModel.togglePlayPause()
-        
+
         assertTrue(viewModel.state.value.isRunning)
 
         // Advance time by 1 second
         advanceTimeBy(1001)
-        
+
         // Timer should decrement
         assertEquals(9, viewModel.state.value.secondsRemaining)
     }
@@ -136,16 +143,54 @@ class RoutineViewModelTest {
         assertTrue(state.isCompleted)
         assertFalse(state.isRunning)
         assertEquals(0, state.secondsRemaining)
-        verify(audioManager).playCompletionSound()
+        verify(audioManager).playIntervalSound()
     }
+
+    @Test
+    fun `timer plays interval sound and decrements interval count before advancing to next pose`() =
+            runTest {
+                // Set pose1 to have 2 intervals of 10s each
+                val poseSettings =
+                        com.stretchie.PoseSettings.newBuilder()
+                                .setIntervalCount(2)
+                                .setDuration(10)
+                                .build()
+                val mockSettings =
+                        UserSettings.newBuilder().putPoseOverrides("pose1", poseSettings).build()
+                userSettingsFlow.value = mockSettings
+
+                createViewModel()
+                testDispatcher.scheduler.advanceUntilIdle()
+
+                viewModel.togglePlayPause() // Start
+
+                // First interval is 10s. Advance by 10s.
+                advanceTimeBy(10001)
+
+                // It should still be on pose1, but now on interval 2.
+                var state = viewModel.state.value
+                assertEquals(0, state.currentPoseIndex)
+                assertEquals("pose1", state.currentPose?.id)
+                assertEquals(2, state.currentInterval)
+                assertEquals(10, state.secondsRemaining)
+                verify(audioManager).playIntervalSound()
+
+                // Advance another 10s. It should transition to pose2.
+                advanceTimeBy(10001)
+
+                state = viewModel.state.value
+                assertEquals(1, state.currentPoseIndex)
+                assertEquals("pose2", state.currentPose?.id)
+                assertEquals(1, state.currentInterval)
+                assertEquals(10, state.secondsRemaining)
+                verify(audioManager).playPoseChangeSound()
+            }
 
     @Test
     fun `skip logic ignores skipped poses when loading`() = runTest {
         // Skip pose1
         val poseSettings = com.stretchie.PoseSettings.newBuilder().setIsSkipped(true).build()
-        val mockSettings = UserSettings.newBuilder()
-            .putPoseOverrides("pose1", poseSettings)
-            .build()
+        val mockSettings = UserSettings.newBuilder().putPoseOverrides("pose1", poseSettings).build()
         userSettingsFlow.value = mockSettings
 
         createViewModel()
@@ -163,7 +208,7 @@ class RoutineViewModelTest {
         testDispatcher.scheduler.advanceUntilIdle()
 
         viewModel.nextPose()
-        
+
         val state = viewModel.state.value
         assertEquals(1, state.currentPoseIndex)
         assertEquals("pose2", state.currentPose?.id)
@@ -179,7 +224,7 @@ class RoutineViewModelTest {
         assertEquals(1, viewModel.state.value.currentPoseIndex)
 
         viewModel.previousPose() // Go back to pose1
-        
+
         val state = viewModel.state.value
         assertEquals(0, state.currentPoseIndex)
         assertEquals("pose1", state.currentPose?.id)

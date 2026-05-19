@@ -76,7 +76,8 @@ fun MainScreen(viewModel: RoutineViewModel, onNavigateToSettings: () -> Unit) {
                     color = OnSurface
             )
             Text(
-                    text = "Pose ${state.currentPoseIndex + 1} of ${state.poses.size}",
+                    text = "Pose ${state.currentPoseIndex + 1} of ${state.poses.size}" +
+                            if (state.currentIntervalCount > 1) " • Interval ${state.currentInterval} of ${state.currentIntervalCount}" else "",
                     style = MaterialTheme.typography.bodyLarge,
                     color = OnSurface.copy(alpha = 0.7f)
             )
@@ -153,7 +154,7 @@ fun IdleControls(onPlay: () -> Unit, onSettings: () -> Unit) {
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
         Button(
                 onClick = onPlay,
-                modifier = Modifier.size(120.dp, 48.dp),
+                modifier = Modifier.size(140.dp, 48.dp),
                 shape = RoundedCornerShape(24.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = OrangePrimary)
         ) {
@@ -166,7 +167,7 @@ fun IdleControls(onPlay: () -> Unit, onSettings: () -> Unit) {
 
         Button(
                 onClick = onSettings,
-                modifier = Modifier.size(120.dp, 48.dp),
+                modifier = Modifier.size(140.dp, 48.dp),
                 shape = RoundedCornerShape(24.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Surface)
         ) {

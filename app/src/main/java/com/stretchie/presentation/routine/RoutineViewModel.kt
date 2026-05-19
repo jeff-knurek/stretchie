@@ -39,6 +39,16 @@ class RoutineViewModel(
         }
     }
 
+    private fun getDurationForPose(pose: com.stretchie.data.model.Pose): Int {
+        val override = currentSettings?.poseOverridesMap?.get(pose.id)
+        return if (override != null && override.duration > 0) override.duration else pose.defaultDurationSeconds
+    }
+
+    private fun getIntervalCountForPose(pose: com.stretchie.data.model.Pose): Int {
+        val override = currentSettings?.poseOverridesMap?.get(pose.id)
+        return if (override != null && override.intervalCount > 0) override.intervalCount else 1
+    }
+
     private fun loadPoses() {
         val allPoses = poseRepository.getAllPoses()
         val activePoses =
@@ -48,13 +58,16 @@ class RoutineViewModel(
                 }
         if (activePoses.isNotEmpty()) {
             val firstPose = activePoses[0]
-            val duration =
-                    currentSettings?.poseOverridesMap?.get(firstPose.id)?.duration?.takeIf {
-                        it > 0
-                    }
-                            ?: firstPose.defaultDurationSeconds
+            val duration = getDurationForPose(firstPose)
+            val intervalCount = getIntervalCountForPose(firstPose)
             _state.update {
-                it.copy(poses = activePoses, currentPoseIndex = 0, secondsRemaining = duration)
+                it.copy(
+                    poses = activePoses,
+                    currentPoseIndex = 0,
+                    currentInterval = 1,
+                    currentIntervalCount = intervalCount,
+                    secondsRemaining = duration
+                )
             }
         }
     }
@@ -91,8 +104,44 @@ class RoutineViewModel(
         if (currentState.secondsRemaining > 1) {
             _state.update { it.copy(secondsRemaining = it.secondsRemaining - 1) }
         } else {
-            audioManager.playPoseChangeSound()
-            nextPose()
+            val currentPose = currentState.currentPose
+            if (currentPose != null) {
+                val intervalCount = getIntervalCountForPose(currentPose)
+                if (currentState.currentInterval < intervalCount) {
+                    audioManager.playIntervalSound()
+                    _state.update {
+                        it.copy(
+                            currentInterval = it.currentInterval + 1,
+                            secondsRemaining = getDurationForPose(currentPose)
+                        )
+                    }
+                } else {
+                    if (currentState.currentPoseIndex < currentState.poses.size - 1) {
+                        audioManager.playPoseChangeSound()
+                        val nextIndex = currentState.currentPoseIndex + 1
+                        val nextPose = currentState.poses[nextIndex]
+                        val nextIntervalCount = getIntervalCountForPose(nextPose)
+                        _state.update {
+                            it.copy(
+                                currentPoseIndex = nextIndex,
+                                currentInterval = 1,
+                                currentIntervalCount = nextIntervalCount,
+                                secondsRemaining = getDurationForPose(nextPose)
+                            )
+                        }
+                    } else {
+                        audioManager.playIntervalSound()
+                        _state.update {
+                            it.copy(
+                                isRunning = false,
+                                isCompleted = true,
+                                secondsRemaining = 0
+                            )
+                        }
+                        timerJob?.cancel()
+                    }
+                }
+            }
         }
     }
 
@@ -101,14 +150,26 @@ class RoutineViewModel(
         if (currentState.currentPoseIndex < currentState.poses.size - 1) {
             val nextIndex = currentState.currentPoseIndex + 1
             val nextPose = currentState.poses[nextIndex]
-            val duration =
-                    currentSettings?.poseOverridesMap?.get(nextPose.id)?.duration?.takeIf { it > 0 }
-                            ?: nextPose.defaultDurationSeconds
+            val duration = getDurationForPose(nextPose)
+            val nextIntervalCount = getIntervalCountForPose(nextPose)
 
-            _state.update { it.copy(currentPoseIndex = nextIndex, secondsRemaining = duration) }
+            _state.update {
+                it.copy(
+                    currentPoseIndex = nextIndex,
+                    currentInterval = 1,
+                    currentIntervalCount = nextIntervalCount,
+                    secondsRemaining = duration
+                )
+            }
         } else {
-            audioManager.playCompletionSound()
-            _state.update { it.copy(isRunning = false, isCompleted = true, secondsRemaining = 0) }
+            audioManager.playIntervalSound()
+            _state.update {
+                it.copy(
+                    isRunning = false,
+                    isCompleted = true,
+                    secondsRemaining = 0
+                )
+            }
             timerJob?.cancel()
         }
     }
@@ -118,11 +179,17 @@ class RoutineViewModel(
         if (currentState.currentPoseIndex > 0) {
             val prevIndex = currentState.currentPoseIndex - 1
             val prevPose = currentState.poses[prevIndex]
-            val duration =
-                    currentSettings?.poseOverridesMap?.get(prevPose.id)?.duration?.takeIf { it > 0 }
-                            ?: prevPose.defaultDurationSeconds
+            val duration = getDurationForPose(prevPose)
+            val prevIntervalCount = getIntervalCountForPose(prevPose)
 
-            _state.update { it.copy(currentPoseIndex = prevIndex, secondsRemaining = duration) }
+            _state.update {
+                it.copy(
+                    currentPoseIndex = prevIndex,
+                    currentInterval = 1,
+                    currentIntervalCount = prevIntervalCount,
+                    secondsRemaining = duration
+                )
+            }
         }
     }
 
@@ -130,16 +197,15 @@ class RoutineViewModel(
         val activePoses = _state.value.poses
         if (activePoses.isNotEmpty()) {
             val firstPose = activePoses[0]
-            val duration =
-                    currentSettings?.poseOverridesMap?.get(firstPose.id)?.duration?.takeIf {
-                        it > 0
-                    }
-                            ?: firstPose.defaultDurationSeconds
+            val duration = getDurationForPose(firstPose)
+            val firstIntervalCount = getIntervalCountForPose(firstPose)
             _state.update {
                 it.copy(
                         isRunning = false,
                         isCompleted = false,
                         currentPoseIndex = 0,
+                        currentInterval = 1,
+                        currentIntervalCount = firstIntervalCount,
                         secondsRemaining = duration
                 )
             }

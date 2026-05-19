@@ -104,7 +104,7 @@ fun SettingsScreen(
                 1 -> OtherTabContent(
                     settings = settings,
                     onPoseChangeSoundPicked = { viewModel.updatePoseChangeSound(it) },
-                    onCompletionSoundPicked = { viewModel.updateCompletionSound(it) }
+                    onIntervalSoundPicked = { viewModel.updateIntervalSound(it) }
                 )
             }
         }
@@ -202,7 +202,7 @@ fun PoseSettingsItem(
 fun OtherTabContent(
     settings: UserSettings,
     onPoseChangeSoundPicked: (String) -> Unit,
-    onCompletionSoundPicked: (String) -> Unit
+    onIntervalSoundPicked: (String) -> Unit
 ) {
     val context = LocalContext.current
 
@@ -213,10 +213,10 @@ fun OtherTabContent(
         }
     }
 
-    val completionLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+    val intervalSoundLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val uri = result.data?.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI, Uri::class.java)
-            onCompletionSoundPicked(uri?.toString() ?: "")
+            onIntervalSoundPicked(uri?.toString() ?: "")
         }
     }
 
@@ -270,17 +270,17 @@ fun OtherTabContent(
                 .background(Surface)
                 .clickable {
                     val intent = Intent(RingtoneManager.ACTION_RINGTONE_PICKER).apply {
-                        putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_ALARM)
+                        putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION)
                         putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, true)
                         putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, true)
                     }
-                    completionLauncher.launch(intent)
+                    intervalSoundLauncher.launch(intent)
                 }
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text("Completion Sound", color = OnSurface)
+            Text("Interval Sound", color = OnSurface)
             Text(
                 text = if (settings.intervalSound.isNotEmpty()) getRingtoneName(settings.intervalSound) else "Default", 
                 color = OnSurface.copy(alpha = 0.6f)

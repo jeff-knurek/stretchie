@@ -33,9 +33,9 @@ class SettingsViewModel(
         }
     }
     
-    fun updateCompletionSound(uri: String) {
+    fun updateIntervalSound(uri: String) {
         viewModelScope.launch {
-            settingsRepository.updateCompletionSound(uri)
+            settingsRepository.updateIntervalSound(uri)
         }
     }
 

@@ -73,11 +73,10 @@ class SettingsRepository(private val context: Context) {
         }
     }
 
-    suspend fun updateCompletionSound(uriString: String) {
+    suspend fun updateIntervalSound(uriString: String) {
         context.userSettingsStore.updateData { currentSettings ->
             currentSettings.toBuilder()
-                .setIntervalSound(uriString) // wait, intervalSound was used for completion or interval breaks? 
-                // Let's use intervalSound for Completion for now since it is defined in user_settings.proto
+                .setIntervalSound(uriString)
                 .build()
         }
     }

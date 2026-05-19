@@ -27,14 +27,14 @@ class AudioManager(
         }
     }
 
-    fun playCompletionSound() {
+    fun playIntervalSound() {
         try {
             val settings = runBlocking { settingsRepository.userSettingsFlow.firstOrNull() }
             val uriString = settings?.intervalSound
             val uri = if (!uriString.isNullOrEmpty()) {
                 Uri.parse(uriString)
             } else {
-                RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
+                RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
             }
             val ringtone = RingtoneManager.getRingtone(context, uri)
             ringtone.play()
