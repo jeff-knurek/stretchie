@@ -230,4 +230,27 @@ class RoutineViewModelTest {
         assertEquals("pose1", state.currentPose?.id)
         assertEquals(10, state.secondsRemaining)
     }
+    @Test
+    fun `getTotalRemainingTime returns correct total at start`() = runTest {
+        createViewModel()
+        testDispatcher.scheduler.advanceUntilIdle()
+        val total = viewModel.getTotalRemainingTime()
+        // Two poses, each 10 seconds, interval count default 1
+        assertEquals(20, total)
+    }
+
+    @Test
+    fun `getTotalRemainingTime updates after advancing to next pose`() = runTest {
+        createViewModel()
+        testDispatcher.scheduler.advanceUntilIdle()
+        viewModel.togglePlayPause()
+        // advance first pose duration
+        advanceTimeBy(10001)
+        // allow transition delay to process
+        advanceTimeBy(1501)
+        val total = viewModel.getTotalRemainingTime()
+        // now only second pose remains 10 seconds
+        assertEquals(10, total)
+    }
+
 }
