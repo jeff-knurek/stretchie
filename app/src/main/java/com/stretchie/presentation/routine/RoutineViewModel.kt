@@ -139,10 +139,23 @@ class RoutineViewModel(
                         }
                         playTransitionDelay()
                     } else {
-                        // last pose, end of routine
+                        // last pose, end of routine - reset to first pose for next run
                         audioManager.playIntervalSound()
-                        _state.update {
-                            it.copy(isRunning = false, isCompleted = true, secondsRemaining = 0)
+                        // Reset state to start of routine without starting automatically
+                        val firstPose = _state.value.poses.firstOrNull()
+                        if (firstPose != null) {
+                            val duration = getDurationForPose(firstPose)
+                            val intervalCount = getIntervalCountForPose(firstPose)
+                            _state.update {
+                                it.copy(
+                                    isRunning = false,
+                                    isCompleted = false,
+                                    currentPoseIndex = 0,
+                                    currentInterval = 1,
+                                    currentIntervalCount = intervalCount,
+                                    secondsRemaining = duration
+                                )
+                            }
                         }
                         timerJob?.cancel()
                     }
