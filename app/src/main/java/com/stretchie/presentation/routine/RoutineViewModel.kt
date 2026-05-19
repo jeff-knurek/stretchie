@@ -206,24 +206,26 @@ class RoutineViewModel(
         }
     }
 
-    fun restart() {
-        val activePoses = _state.value.poses
-        if (activePoses.isNotEmpty()) {
-            val firstPose = activePoses[0]
-            val duration = getDurationForPose(firstPose)
-            val firstIntervalCount = getIntervalCountForPose(firstPose)
-            _state.update {
-                it.copy(
-                        isRunning = false,
-                        isCompleted = false,
-                        currentPoseIndex = 0,
-                        currentInterval = 1,
-                        currentIntervalCount = firstIntervalCount,
-                        secondsRemaining = duration
-                )
-            }
+    fun getTotalRemainingTime(): Int {
+        val currentState = _state.value
+        // If no poses, return 0
+        if (currentState.poses.isEmpty()) return 0
+        var total = currentState.secondsRemaining
+        // Remaining intervals in current pose
+        val remainingIntervalsInCurrent = currentState.currentIntervalCount - currentState.currentInterval
+        val currentPose = currentState.currentPose
+        if (currentPose != null) {
+            val durationPerInterval = getDurationForPose(currentPose)
+            total += remainingIntervalsInCurrent * durationPerInterval
         }
-        timerJob?.cancel()
+        // Add full durations for all future poses
+        for (i in (currentState.currentPoseIndex + 1) until currentState.poses.size) {
+            val pose = currentState.poses[i]
+            val duration = getDurationForPose(pose)
+            val intervalCount = getIntervalCountForPose(pose)
+            total += duration * intervalCount
+        }
+        return total
     }
 
     class Factory(

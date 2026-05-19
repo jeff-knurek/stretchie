@@ -76,14 +76,21 @@ fun MainScreen(viewModel: RoutineViewModel, onNavigateToSettings: () -> Unit) {
                     color = OnSurface
             )
             Text(
-                    text = "Pose ${state.currentPoseIndex + 1} of ${state.poses.size}" +
-                            if (state.currentIntervalCount > 1) " • Interval ${state.currentInterval} of ${state.currentIntervalCount}" else "",
+                    text =
+                            "Pose ${state.currentPoseIndex + 1} of ${state.poses.size}" +
+                                    if (state.currentIntervalCount > 1)
+                                            " • Interval ${state.currentInterval} of ${state.currentIntervalCount}"
+                                    else ""
+            )
+            // Total remaining time display
+            Text(
+                    text = formatTime(viewModel.getTotalRemainingTime()),
                     style = MaterialTheme.typography.bodyLarge,
                     color = OnSurface.copy(alpha = 0.7f)
             )
         }
 
-        Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier.weight(0.6f))
 
         Text(
                 text = formatTime(state.secondsRemaining),
@@ -94,7 +101,7 @@ fun MainScreen(viewModel: RoutineViewModel, onNavigateToSettings: () -> Unit) {
                         )
         )
 
-        Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier.weight(0.4f))
 
         if (state.isRunning) {
             ActiveControls(
