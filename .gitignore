@@ -22,5 +22,7 @@ output.json
 # macOS
 .DS_Store
 
+poses/
+
 # Pencil Design files (Optional: keep .pen, ignore backups if any)
 # *.pen.backup
