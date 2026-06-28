@@ -99,7 +99,7 @@ fun MainScreen(viewModel: RoutineViewModel, onNavigateToSettings: () -> Unit) {
             )
             // Total remaining time display
             Text(
-                    text = formatTime(viewModel.getTotalRemainingTime()),
+                    text = formatTotalTime(viewModel.getTotalRemainingTime()),
                     style = MaterialTheme.typography.bodyLarge,
                     color = OnSurface.copy(alpha = 0.7f)
             )
@@ -233,11 +233,13 @@ fun IdleControls(onPlay: () -> Unit, onPrevious: () -> Unit, onNext: () -> Unit,
 }
 
 private fun formatTime(seconds: Int): String {
-    return if (seconds > 99) {
-        val m = seconds / 60
-        val s = seconds % 60
-        String.format("%02d:%02d", m, s)
-    } else {
-        String.format("%02d", seconds)
+    return when {
+        seconds >= 60 -> String.format("%d:%02d", seconds / 60, seconds % 60)
+        seconds >= 10 -> String.format("%02d", seconds)
+        else -> String.format("%d", seconds)
     }
+}
+
+private fun formatTotalTime(seconds: Int): String {
+    return String.format("%d:%02d", seconds / 60, seconds % 60)
 }
