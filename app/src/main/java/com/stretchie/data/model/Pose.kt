@@ -16,5 +16,6 @@ data class Pose(
     val name: String,
     @DrawableRes val imageRes: Int,
     val defaultDurationSeconds: Int = 30,
+    val defaultIntervalCount: Int = 1,
     val isSkippable: Boolean = true
 )

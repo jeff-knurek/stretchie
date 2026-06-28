@@ -47,7 +47,7 @@ class RoutineViewModel(
 
     private fun getIntervalCountForPose(pose: com.stretchie.data.model.Pose): Int {
         val override = currentSettings?.poseOverridesMap?.get(pose.id)
-        return if (override != null && override.intervalCount > 0) override.intervalCount else 1
+        return if (override != null && override.intervalCount > 0) override.intervalCount else pose.defaultIntervalCount
     }
 
     private fun loadPoses() {
