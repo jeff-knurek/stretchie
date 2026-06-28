@@ -167,7 +167,7 @@ fun PoseSettingsItem(
             modifier = Modifier
                 .size(48.dp)
                 .clip(RoundedCornerShape(8.dp))
-                .background(LightPeach)
+                .background(Color(0xFFEAEAEA))
         )
 
         Spacer(modifier = Modifier.width(16.dp))

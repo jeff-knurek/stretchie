@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.animation.core.*
 import androidx.compose.ui.platform.LocalContext
@@ -69,14 +70,14 @@ fun MainScreen(viewModel: RoutineViewModel, onNavigateToSettings: () -> Unit) {
                     modifier =
                             Modifier.size(300.dp)
                                     .clip(RoundedCornerShape(16.dp))
-                                    .background(Surface)
+                                    .background(Color(0xFFEAEAEA))
             )
         } else {
             Box(
                     modifier =
                             Modifier.size(300.dp)
                                     .clip(RoundedCornerShape(16.dp))
-                                    .background(Surface),
+                                    .background(Color(0xFFEAEAEA)),
                     contentAlignment = Alignment.Center
             ) { Text("No Poses", color = OnSurface) }
         }
