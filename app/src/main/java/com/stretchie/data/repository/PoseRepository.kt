@@ -18,43 +18,48 @@ class PoseRepository {
                         id = "back_stretch",
                         name = "Back Stretch",
                         imageRes = R.drawable.back_stretch,
-                        defaultDurationSeconds = 30
+                        defaultDurationSeconds = 10
                 ),
                 Pose(
                         id = "tricep",
                         name = "Tricep",
                         imageRes = R.drawable.tricep,
-                        defaultDurationSeconds = 30
-                ),
-                Pose(
-                        id = "shoulder_opener",
-                        name = "Shoulder Opener",
-                        imageRes = R.drawable.shoulder_opener,
-                        defaultDurationSeconds = 30
-                ),
-                Pose(
-                        id = "standing_quad",
-                        name = "Standing Quad",
-                        imageRes = R.drawable.standing_quad,
-                        defaultDurationSeconds = 30
+                        defaultDurationSeconds = 20
                 ),
                 Pose(
                         id = "calf_raises",
                         name = "Calf Raises",
                         imageRes = R.drawable.calf_raises,
-                        defaultDurationSeconds = 30
+                        defaultDurationSeconds = 5,
+                        defaultIntervalCount = 4
+                ),
+                Pose(
+                        id = "shoulder_opener",
+                        name = "Shoulder Opener",
+                        imageRes = R.drawable.shoulder_opener,
+                        defaultDurationSeconds = 20,
+                        defaultIntervalCount = 2
+                ),
+                Pose(
+                        id = "standing_quad",
+                        name = "Standing Quad",
+                        imageRes = R.drawable.standing_quad,
+                        defaultDurationSeconds = 30,
+                        defaultIntervalCount = 2
                 ),
                 Pose(
                         id = "calf_stretch_toes_on_wall",
                         name = "Calf Stretch Toes On Wall",
                         imageRes = R.drawable.calf_stretch_toes_on_wall,
-                        defaultDurationSeconds = 30
+                        defaultDurationSeconds = 20,
+                        defaultIntervalCount = 2
                 ),
                 Pose(
                         id = "calf_stretch",
-                        name = "Calf Stretch",
+                        name = "Runners Stretch",
                         imageRes = R.drawable.calf_stretch,
-                        defaultDurationSeconds = 30
+                        defaultDurationSeconds = 25,
+                        defaultIntervalCount = 4
                 ),
                 Pose(
                         id = "forward_fold",
@@ -66,25 +71,28 @@ class PoseRepository {
                         id = "side_lunge",
                         name = "Side Lunge",
                         imageRes = R.drawable.side_lunge,
-                        defaultDurationSeconds = 30
+                        defaultDurationSeconds = 20,
+                        defaultIntervalCount = 2
                 ),
                 Pose(
                         id = "lunge",
                         name = "Lunge",
                         imageRes = R.drawable.lunge,
-                        defaultDurationSeconds = 30
+                        defaultDurationSeconds = 20,
+                        defaultIntervalCount = 2
                 ),
                 Pose(
                         id = "lunge_with_twist",
                         name = "Lunge With Twist",
                         imageRes = R.drawable.lunge_with_twist,
-                        defaultDurationSeconds = 30
+                        defaultDurationSeconds = 20,
+                        defaultIntervalCount = 2
                 ),
                 Pose(
                         id = "cat_cow",
                         name = "Cat Cow",
                         imageRes = R.drawable.cat_cow,
-                        defaultDurationSeconds = 30
+                        defaultDurationSeconds = 25
                 ),
                 Pose(
                         id = "hero",
@@ -96,7 +104,8 @@ class PoseRepository {
                         id = "pigeon",
                         name = "Pigeon",
                         imageRes = R.drawable.pigeon,
-                        defaultDurationSeconds = 30
+                        defaultDurationSeconds = 30,
+                        defaultIntervalCount = 2
                 ),
                 Pose(
                         id = "butterfly",
@@ -108,25 +117,29 @@ class PoseRepository {
                         id = "crunch",
                         name = "Crunch",
                         imageRes = R.drawable.crunch,
-                        defaultDurationSeconds = 30
+                        defaultDurationSeconds = 15,
+                        defaultIntervalCount = 3
                 ),
                 Pose(
                         id = "figure_four",
                         name = "Figure Four",
                         imageRes = R.drawable.figure_four,
-                        defaultDurationSeconds = 30
+                        defaultDurationSeconds = 20,
+                        defaultIntervalCount = 2
                 ),
                 Pose(
                         id = "ankle_rotation",
                         name = "Ankle Rotation",
                         imageRes = R.drawable.ankle_rotation,
-                        defaultDurationSeconds = 30
+                        defaultDurationSeconds = 10,
+                        defaultIntervalCount = 4
                 ),
                 Pose(
                         id = "it_band",
                         name = "It Band",
                         imageRes = R.drawable.it_band,
-                        defaultDurationSeconds = 30
+                        defaultDurationSeconds = 30,
+                        defaultIntervalCount = 2
                 )
                 )
     }
