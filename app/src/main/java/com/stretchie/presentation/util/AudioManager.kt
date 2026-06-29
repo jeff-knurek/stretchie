@@ -1,6 +1,7 @@
 package com.stretchie.presentation.util
 
 import android.content.Context
+import android.media.AudioAttributes
 import android.media.RingtoneManager
 import android.net.Uri
 import com.stretchie.data.repository.SettingsRepository
@@ -11,6 +12,11 @@ class AudioManager(
     private val context: Context,
     private val settingsRepository: SettingsRepository
 ) {
+    private val alarmAudioAttributes = AudioAttributes.Builder()
+        .setUsage(AudioAttributes.USAGE_ALARM)
+        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+        .build()
+
     fun playPoseChangeSound() {
         try {
             val settings = runBlocking { settingsRepository.userSettingsFlow.firstOrNull() }
@@ -21,6 +27,7 @@ class AudioManager(
                 RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
             }
             val ringtone = RingtoneManager.getRingtone(context, uri)
+            ringtone.audioAttributes = alarmAudioAttributes
             ringtone.play()
         } catch (e: Exception) {
             e.printStackTrace()
@@ -37,6 +44,7 @@ class AudioManager(
                 RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
             }
             val ringtone = RingtoneManager.getRingtone(context, uri)
+            ringtone.audioAttributes = alarmAudioAttributes
             ringtone.play()
         } catch (e: Exception) {
             e.printStackTrace()
