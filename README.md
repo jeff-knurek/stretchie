@@ -73,6 +73,22 @@ To add a new static pose to the application, follow these steps:
 
 ---
 
+## Loading onto physical device:
+
+1. `./gradlew assembleDebug` this creates a apk file at `app/build/outputs/apk/debug/app-debug.apk`.
+2. Copy apk file to device
+
+To install directly over USB, enable USB debugging on your device:
+Then `./gradlew installDebug`
+This builds and pushes the APK to your connected device in one step.
+one-time device setup:
+
+1. Settings > About phone — tap "Build number" 7 times to unlock Developer Options
+2. Settings > Developer options — enable "USB debugging"
+3. Connect via USB and accept the trust prompt on the device
+
+---
+
 ## License
 
 [MIT](LICENSE)
