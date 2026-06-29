@@ -1,0 +1,28 @@
+# Gradle
+.gradle/
+build/
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+*.jks
+*.keystore
+*.pk8
+*.pem
+output.json
+
+# Kotlin
+.kotlin/
+*.kotlin_module
+
+# macOS
+.DS_Store
+
+poses/
+
+# Pencil Design files (Optional: keep .pen, ignore backups if any)
+# *.pen.backup
