@@ -24,7 +24,8 @@ class PoseRepository {
                         id = "tricep",
                         name = "Tricep",
                         imageRes = R.drawable.tricep,
-                        defaultDurationSeconds = 20
+                        defaultDurationSeconds = 15,
+                        defaultIntervalCount = 2
                 ),
                 Pose(
                         id = "calf_raises",
