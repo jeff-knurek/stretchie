@@ -21,13 +21,6 @@ class PoseRepository {
                         defaultDurationSeconds = 10
                 ),
                 Pose(
-                        id = "tricep",
-                        name = "Tricep",
-                        imageRes = R.drawable.tricep,
-                        defaultDurationSeconds = 15,
-                        defaultIntervalCount = 2
-                ),
-                Pose(
                         id = "calf_raises",
                         name = "Calf Raises",
                         imageRes = R.drawable.calf_raises,
@@ -35,17 +28,24 @@ class PoseRepository {
                         defaultIntervalCount = 4
                 ),
                 Pose(
+                        id = "tricep",
+                        name = "Tricep",
+                        imageRes = R.drawable.tricep,
+                        defaultDurationSeconds = 15,
+                        defaultIntervalCount = 2
+                ),
+                Pose(
                         id = "shoulder_opener",
                         name = "Shoulder Opener",
                         imageRes = R.drawable.shoulder_opener,
-                        defaultDurationSeconds = 20,
+                        defaultDurationSeconds = 15,
                         defaultIntervalCount = 2
                 ),
                 Pose(
                         id = "standing_quad",
                         name = "Standing Quad",
                         imageRes = R.drawable.standing_quad,
-                        defaultDurationSeconds = 30,
+                        defaultDurationSeconds = 20,
                         defaultIntervalCount = 2
                 ),
                 Pose(
