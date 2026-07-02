@@ -1,7 +1,6 @@
 package com.stretchie.presentation.routine
 
 import android.view.WindowManager
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -18,8 +17,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.animation.core.*
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import coil3.compose.AsyncImage
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.stretchie.ui.theme.*
@@ -64,8 +63,8 @@ fun MainScreen(viewModel: RoutineViewModel, onNavigateToSettings: () -> Unit) {
         Spacer(modifier = Modifier.height(32.dp))
 
         if (state.currentPose != null) {
-            Image(
-                    painter = painterResource(id = state.currentPose!!.imageRes),
+            AsyncImage(
+                    model = state.currentPose!!.imageRes,
                     contentDescription = state.currentPose!!.name,
                     modifier =
                             Modifier.size(300.dp)

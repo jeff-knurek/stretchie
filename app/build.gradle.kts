@@ -71,6 +71,8 @@ dependencies {
     // DataStore (Proto)
     implementation("androidx.datastore:datastore:1.1.1")
     implementation("com.google.protobuf:protobuf-javalite:3.25.1")
+    // Async image loading
+    implementation("io.coil-kt.coil3:coil-compose:3.0.4")
 
     debugImplementation("androidx.compose.ui:ui-tooling:1.6.8")
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.6.8")
