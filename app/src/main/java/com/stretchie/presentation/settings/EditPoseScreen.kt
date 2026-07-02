@@ -32,7 +32,7 @@ fun EditPoseScreen(
         mutableIntStateOf(if (override != null && override.duration > 0) override.duration else pose?.defaultDurationSeconds ?: 30) 
     }
     var intervalCount by remember(override) { 
-        mutableIntStateOf(if (override != null && override.intervalCount > 0) override.intervalCount else 1) 
+        mutableIntStateOf(if (override != null && override.intervalCount > 0) override.intervalCount else pose?.defaultIntervalCount ?: 1)
     }
     val isSkipped = override?.getIsSkipped() ?: false
 
