@@ -125,7 +125,7 @@ fun PosesTabContent(
         items(poses) { pose ->
             val override = settings.poseOverridesMap[pose.id]
             val duration = if (override != null && override.duration > 0) override.duration else pose.defaultDurationSeconds
-            val intervalCount = if (override != null && override.intervalCount > 0) override.intervalCount else 1
+            val intervalCount = if (override != null && override.intervalCount > 0) override.intervalCount else pose.defaultIntervalCount
             val isSkipped = override?.getIsSkipped() ?: false
 
             PoseSettingsItem(
