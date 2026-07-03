@@ -1,5 +1,5 @@
 {
-  "version": "2.11",
+  "version": "2.14",
   "children": [
     {
       "type": "frame",
@@ -9,7 +9,25 @@
       "name": "Main Screen",
       "width": 360,
       "height": 640,
-      "fill": "$background",
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 180,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#FFF3E0",
+            "position": 0
+          },
+          {
+            "color": "#FFCCBC",
+            "position": 1
+          }
+        ]
+      },
       "layout": "vertical",
       "gap": 24,
       "padding": 24,
@@ -100,7 +118,6 @@
               "id": "Ar2Og",
               "name": "Controls Row",
               "width": "fill_container",
-              "layout": "horizontal",
               "gap": 16,
               "justifyContent": "center",
               "alignItems": "center",
@@ -117,12 +134,12 @@
                   "alignItems": "center",
                   "children": [
                     {
-                      "type": "icon_font",
+                      "type": "icon",
                       "id": "pvIcon",
                       "width": 24,
                       "height": 24,
-                      "iconFontName": "skip_previous",
-                      "iconFontFamily": "lucide",
+                      "icon": "skip_previous",
+                      "library": "lucide",
                       "fill": "$on-surface"
                     }
                   ]
@@ -135,18 +152,17 @@
                   "height": 48,
                   "fill": "$primary",
                   "cornerRadius": 24,
+                  "gap": 8,
                   "justifyContent": "center",
                   "alignItems": "center",
-                  "layout": "horizontal",
-                  "gap": 8,
                   "children": [
                     {
-                      "type": "icon_font",
+                      "type": "icon",
                       "id": "plIcon",
                       "width": 24,
                       "height": 24,
-                      "iconFontName": "play_arrow",
-                      "iconFontFamily": "lucide",
+                      "icon": "play_arrow",
+                      "library": "lucide",
                       "fill": "$on-primary"
                     },
                     {
@@ -173,12 +189,12 @@
                   "alignItems": "center",
                   "children": [
                     {
-                      "type": "icon_font",
+                      "type": "icon",
                       "id": "nxIcon",
                       "width": 24,
                       "height": 24,
-                      "iconFontName": "skip_next",
-                      "iconFontFamily": "lucide",
+                      "icon": "skip_next",
+                      "library": "lucide",
                       "fill": "$on-surface"
                     }
                   ]
@@ -193,18 +209,17 @@
               "height": 48,
               "fill": "#E0E0E0",
               "cornerRadius": 24,
+              "gap": 8,
               "justifyContent": "center",
               "alignItems": "center",
-              "layout": "horizontal",
-              "gap": 8,
               "children": [
                 {
-                  "type": "icon_font",
+                  "type": "icon",
                   "id": "seIcon",
                   "width": 24,
                   "height": 24,
-                  "iconFontName": "settings",
-                  "iconFontFamily": "lucide",
+                  "icon": "settings",
+                  "library": "lucide",
                   "fill": "$on-surface"
                 },
                 {
@@ -231,7 +246,25 @@
       "name": "Settings Screen",
       "width": 360,
       "height": 640,
-      "fill": "$background",
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 180,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#FFF3E0",
+            "position": 0
+          },
+          {
+            "color": "#FFCCBC",
+            "position": 1
+          }
+        ]
+      },
       "layout": "vertical",
       "gap": 24,
       "padding": 24,
@@ -260,8 +293,15 @@
           "name": "tabs",
           "width": "fill_container",
           "height": 48,
-          "fill": "#FFF3E0",
-          "cornerRadius": 8,
+          "fill": {
+            "type": "color",
+            "color": "#FFF3E0",
+            "enabled": false
+          },
+          "stroke": "#E0E0E0",
+          "strokeWidth": {
+            "bottom": 1
+          },
           "children": [
             {
               "type": "frame",
@@ -269,20 +309,38 @@
               "name": "tab1",
               "width": "fill_container",
               "height": "fill_container",
-              "fill": "$primary",
-              "cornerRadius": 8,
-              "justifyContent": "center",
+              "fill": {
+                "type": "color",
+                "color": "$primary",
+                "enabled": false
+              },
+              "layout": "vertical",
+              "padding": [
+                10,
+                0,
+                0,
+                0
+              ],
+              "justifyContent": "space_between",
               "alignItems": "center",
               "children": [
                 {
                   "type": "text",
                   "id": "pjQnQ",
                   "name": "tab1Text",
-                  "fill": "$on-primary",
+                  "fill": "$primary",
                   "content": "Poses",
                   "fontFamily": "Inter",
                   "fontSize": 14,
-                  "fontWeight": "normal"
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "ohdig",
+                  "name": "Poses Indicator",
+                  "width": "fill_container",
+                  "height": 3,
+                  "fill": "$primary"
                 }
               ]
             },
@@ -292,6 +350,12 @@
               "name": "tab2",
               "width": "fill_container",
               "height": "fill_container",
+              "fill": {
+                "type": "color",
+                "color": "#E0E0E0",
+                "enabled": false
+              },
+              "layout": "vertical",
               "justifyContent": "center",
               "alignItems": "center",
               "children": [
@@ -303,7 +367,7 @@
                   "content": "Other",
                   "fontFamily": "Inter",
                   "fontSize": 14,
-                  "fontWeight": "normal"
+                  "fontWeight": "700"
                 }
               ]
             }
@@ -350,13 +414,13 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "Dturv",
                           "name": "icon1I",
                           "width": 24,
                           "height": 24,
-                          "iconFontName": "accessibility",
-                          "iconFontFamily": "Material Symbols Rounded",
+                          "icon": "accessibility",
+                          "library": "Material Symbols Rounded",
                           "fill": "$primary"
                         }
                       ]
@@ -438,13 +502,13 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "H4otR",
                           "name": "icon2I",
                           "width": 24,
                           "height": 24,
-                          "iconFontName": "fitness_center",
-                          "iconFontFamily": "Material Symbols Rounded",
+                          "icon": "fitness_center",
+                          "library": "Material Symbols Rounded",
                           "fill": "#4CAF50"
                         }
                       ]
@@ -527,13 +591,13 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "nLsHt",
                           "name": "icon3I",
                           "width": 24,
                           "height": 24,
-                          "iconFontName": "directions_run",
-                          "iconFontFamily": "Material Symbols Rounded",
+                          "icon": "directions_run",
+                          "library": "Material Symbols Rounded",
                           "fill": "#2196F3"
                         }
                       ]
@@ -606,7 +670,25 @@
       "name": "Settings - Other",
       "width": 360,
       "height": 640,
-      "fill": "$background",
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 180,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#FFF3E0",
+            "position": 0
+          },
+          {
+            "color": "#FFCCBC",
+            "position": 1
+          }
+        ]
+      },
       "layout": "vertical",
       "gap": 24,
       "padding": 24,
@@ -635,8 +717,15 @@
           "name": "tabs",
           "width": "fill_container",
           "height": 48,
-          "fill": "#FFF3E0",
-          "cornerRadius": 8,
+          "fill": {
+            "type": "color",
+            "color": "#FFF3E0",
+            "enabled": false
+          },
+          "stroke": "#E0E0E0",
+          "strokeWidth": {
+            "bottom": 1
+          },
           "children": [
             {
               "type": "frame",
@@ -644,6 +733,12 @@
               "name": "tab1",
               "width": "fill_container",
               "height": "fill_container",
+              "fill": {
+                "type": "color",
+                "color": "#E0E0E0",
+                "enabled": false
+              },
+              "layout": "vertical",
               "justifyContent": "center",
               "alignItems": "center",
               "children": [
@@ -655,7 +750,7 @@
                   "content": "Poses",
                   "fontFamily": "Inter",
                   "fontSize": 14,
-                  "fontWeight": "normal"
+                  "fontWeight": "700"
                 }
               ]
             },
@@ -665,20 +760,38 @@
               "name": "tab2",
               "width": "fill_container",
               "height": "fill_container",
-              "fill": "$primary",
-              "cornerRadius": 8,
-              "justifyContent": "center",
+              "fill": {
+                "type": "color",
+                "color": "$primary",
+                "enabled": false
+              },
+              "layout": "vertical",
+              "padding": [
+                10,
+                0,
+                0,
+                0
+              ],
+              "justifyContent": "space_between",
               "alignItems": "center",
               "children": [
                 {
                   "type": "text",
                   "id": "Ma8er",
                   "name": "tab2Text",
-                  "fill": "$on-primary",
+                  "fill": "$primary",
                   "content": "Other",
                   "fontFamily": "Inter",
                   "fontSize": 14,
-                  "fontWeight": "normal"
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "r4tGaG",
+                  "name": "Other Indicator",
+                  "width": "fill_container",
+                  "height": 3,
+                  "fill": "$primary"
                 }
               ]
             }
@@ -781,7 +894,25 @@
       "name": "Edit Pose Screen",
       "width": 360,
       "height": 640,
-      "fill": "#FFF3E0",
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 180,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#FFF3E0",
+            "position": 0
+          },
+          {
+            "color": "#FFCCBC",
+            "position": 1
+          }
+        ]
+      },
       "layout": "vertical",
       "gap": 24,
       "padding": 24,
@@ -795,13 +926,13 @@
           "alignItems": "center",
           "children": [
             {
-              "type": "icon_font",
+              "type": "icon",
               "id": "CIPm0",
               "name": "backBtn",
               "width": 24,
               "height": 24,
-              "iconFontName": "arrow_back",
-              "iconFontFamily": "Material Symbols Rounded",
+              "icon": "arrow_back",
+              "library": "Material Symbols Rounded",
               "fill": "$on-surface"
             },
             {
@@ -813,39 +944,6 @@
               "fontFamily": "Inter",
               "fontSize": 20,
               "fontWeight": "normal"
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "AXPTX",
-          "name": "hero",
-          "width": "fill_container",
-          "justifyContent": "center",
-          "alignItems": "center",
-          "children": [
-            {
-              "type": "frame",
-              "id": "tUu3Q",
-              "name": "heroCircle",
-              "width": 100,
-              "height": 100,
-              "fill": "#FFE0B2",
-              "cornerRadius": 50,
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon_font",
-                  "id": "Ox5B3",
-                  "name": "heroIcon",
-                  "width": 48,
-                  "height": 48,
-                  "iconFontName": "accessibility",
-                  "iconFontFamily": "Material Symbols Rounded",
-                  "fill": "$primary"
-                }
-              ]
             }
           ]
         },
@@ -903,23 +1001,23 @@
                       "gap": 16,
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "TpVY1",
                           "name": "durMinus",
                           "width": 24,
                           "height": 24,
-                          "iconFontName": "remove",
-                          "iconFontFamily": "Material Symbols Rounded",
+                          "icon": "remove",
+                          "library": "Material Symbols Rounded",
                           "fill": "$primary"
                         },
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "wqw8J",
                           "name": "durPlus",
                           "width": 24,
                           "height": 24,
-                          "iconFontName": "add",
-                          "iconFontFamily": "Material Symbols Rounded",
+                          "icon": "add",
+                          "library": "Material Symbols Rounded",
                           "fill": "$primary"
                         }
                       ]
@@ -974,28 +1072,68 @@
                       "gap": 16,
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "IgpSy",
                           "name": "intMinus",
                           "width": 24,
                           "height": 24,
-                          "iconFontName": "remove",
-                          "iconFontFamily": "Material Symbols Rounded",
+                          "icon": "remove",
+                          "library": "Material Symbols Rounded",
                           "fill": "$primary"
                         },
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "e4kiIa",
                           "name": "intPlus",
                           "width": 24,
                           "height": 24,
-                          "iconFontName": "add",
-                          "iconFontFamily": "Material Symbols Rounded",
+                          "icon": "add",
+                          "library": "Material Symbols Rounded",
                           "fill": "$primary"
                         }
                       ]
                     }
                   ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "AXPTX",
+          "name": "hero",
+          "width": 311,
+          "height": 146,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "i3H2SZ",
+              "name": "Spacer",
+              "width": 286,
+              "height": 123,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ta5PO",
+                  "name": "Screenshot Placeholder",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "matt909",
+                    "link": "https://unsplash.com/@matt909",
+                    "author": "Alex Shaw"
+                  },
+                  "width": "fill_container",
+                  "height": 300,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1597460970375-1449df2fb73a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzgwMDYwMDN8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 16
                 }
               ]
             }
@@ -1041,7 +1179,25 @@
       "name": "Active Routine Screen",
       "width": 360,
       "height": 640,
-      "fill": "$background",
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 180,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#FFF3E0",
+            "position": 0
+          },
+          {
+            "color": "#FFCCBC",
+            "position": 1
+          }
+        ]
+      },
       "layout": "vertical",
       "gap": 24,
       "padding": 24,
@@ -1051,7 +1207,7 @@
           "id": "rmGJl",
           "name": "Spacer",
           "width": "fill_container",
-          "height": 312,
+          "height": 300,
           "children": [
             {
               "type": "frame",
@@ -1100,6 +1256,16 @@
               "name": "routineProgress",
               "fill": "#757575",
               "content": "Pose 1 of 12",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "vw7AF",
+              "name": "totalTimeRemaining",
+              "fill": "#000000B3",
+              "content": "12:30",
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontWeight": "normal"
@@ -1154,13 +1320,13 @@
           "alignItems": "center",
           "children": [
             {
-              "type": "icon_font",
+              "type": "icon",
               "id": "tQ8bx",
               "name": "prevBtn",
               "width": 40,
               "height": 40,
-              "iconFontName": "skip_previous",
-              "iconFontFamily": "Material Symbols Rounded",
+              "icon": "skip_previous",
+              "library": "Material Symbols Rounded",
               "fill": "$on-surface"
             },
             {
@@ -1175,25 +1341,25 @@
               "alignItems": "center",
               "children": [
                 {
-                  "type": "icon_font",
+                  "type": "icon",
                   "id": "dWTlX",
                   "name": "pauseIcon",
                   "width": 32,
                   "height": 32,
-                  "iconFontName": "pause",
-                  "iconFontFamily": "Material Symbols Rounded",
+                  "icon": "pause",
+                  "library": "Material Symbols Rounded",
                   "fill": "$on-primary"
                 }
               ]
             },
             {
-              "type": "icon_font",
+              "type": "icon",
               "id": "yThnJ",
               "name": "nextBtn",
               "width": 40,
               "height": 40,
-              "iconFontName": "skip_next",
-              "iconFontFamily": "Material Symbols Rounded",
+              "icon": "skip_next",
+              "library": "Material Symbols Rounded",
               "fill": "$on-surface"
             }
           ]
@@ -1237,5 +1403,6 @@
       "type": "color",
       "value": "#FFFFFF"
     }
-  }
+  },
+  "fileToken": "8168c647-ba8d-44af-8726-89073589177e"
 }
