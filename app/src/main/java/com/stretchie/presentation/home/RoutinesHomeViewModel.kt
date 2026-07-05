@@ -1,39 +1,35 @@
-package com.stretchie.presentation.settings
+package com.stretchie.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.stretchie.UserSettings
+import com.stretchie.data.model.Routine
 import com.stretchie.data.repository.SettingsRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class SettingsViewModel(
+class RoutinesHomeViewModel(
     private val settingsRepository: SettingsRepository
 ) : ViewModel() {
 
-    val userSettings: StateFlow<UserSettings> = settingsRepository.userSettingsFlow
+    val routines: StateFlow<List<Routine>> = settingsRepository.getRoutinesFlow()
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000),
-            initialValue = UserSettings.getDefaultInstance()
+            initialValue = emptyList()
         )
 
-    fun updatePoseChangeSound(uri: String) {
-        viewModelScope.launch { settingsRepository.updatePoseChangeSound(uri) }
-    }
-
-    fun updateIntervalSound(uri: String) {
-        viewModelScope.launch { settingsRepository.updateIntervalSound(uri) }
+    fun deleteRoutine(routineId: String) {
+        viewModelScope.launch { settingsRepository.deleteRoutine(routineId) }
     }
 
     class Factory(private val settingsRepository: SettingsRepository) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(SettingsViewModel::class.java)) {
-                return SettingsViewModel(settingsRepository) as T
+            if (modelClass.isAssignableFrom(RoutinesHomeViewModel::class.java)) {
+                return RoutinesHomeViewModel(settingsRepository) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }

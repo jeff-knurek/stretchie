@@ -10,16 +10,23 @@ message PoseSettings {
   int32 intervalCount = 3;
 }
 
-message UserSettings {
-  // Sound to play for interval breaks
-  string intervalSound = 1;
-  // Sound to play when a pose changes
-  string poseChangeSound = 2;
-  // Number of intervals per pose
+message RoutinePoseConfig {
+  bool included = 1;
+  int32 duration = 2;
   int32 intervalCount = 3;
-  // Length of each interval in seconds
-  int32 intervalDuration = 4;
+}
 
-  // Pose-specific overrides keyed by pose id
+message RoutineConfig {
+  string id = 1;
+  string name = 2;
+  map<string, RoutinePoseConfig> poseConfigs = 3;
+}
+
+message UserSettings {
+  string intervalSound = 1;
+  string poseChangeSound = 2;
+  int32 intervalCount = 3;
+  int32 intervalDuration = 4;
   map<string, PoseSettings> poseOverrides = 5;
+  map<string, RoutineConfig> routines = 6;
 }

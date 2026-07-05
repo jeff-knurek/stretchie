@@ -4,11 +4,11 @@
     {
       "type": "frame",
       "id": "i0fJu9",
-      "x": -122,
-      "y": -932,
+      "x": 237,
+      "y": -916,
       "name": "Main Screen",
       "width": 360,
-      "height": 640,
+      "height": 720,
       "fill": {
         "type": "gradient",
         "gradientType": "linear",
@@ -32,6 +32,48 @@
       "gap": 24,
       "padding": 24,
       "children": [
+        {
+          "type": "frame",
+          "id": "HyRaz",
+          "name": "header",
+          "width": "fill_container",
+          "gap": 12,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "a1qJEw",
+              "name": "Back Button",
+              "width": 48,
+              "height": 48,
+              "fill": "#E0E0E0",
+              "cornerRadius": 24,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "B9SDtb",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "arrow_back",
+                  "library": "Material Symbols Rounded",
+                  "fill": "$on-surface"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "Yhgo5",
+              "name": "poseName",
+              "fill": "$on-surface",
+              "content": "My Routine Name",
+              "fontFamily": "Inter",
+              "fontSize": 24,
+              "fontWeight": "normal"
+            }
+          ]
+        },
         {
           "type": "frame",
           "id": "Rs0Ev",
@@ -63,41 +105,64 @@
         },
         {
           "type": "frame",
-          "id": "SyGEd",
-          "name": "header",
+          "id": "I1vnH",
+          "name": "mainArea",
           "width": "fill_container",
+          "height": 69,
           "layout": "vertical",
-          "gap": 8,
+          "gap": 40,
+          "justifyContent": "center",
           "alignItems": "center",
           "children": [
             {
-              "type": "text",
-              "id": "rrIw4",
-              "name": "poseName",
-              "fill": "$on-surface",
-              "content": "Neck Stretch",
-              "fontFamily": "Inter",
-              "fontSize": 24,
-              "fontWeight": "normal"
-            },
-            {
-              "type": "text",
-              "id": "ivfNL",
-              "name": "routineProgress",
-              "fill": "#757575",
-              "content": "Pose 1 of 12",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontWeight": "normal"
+              "type": "frame",
+              "id": "cKGSB",
+              "name": "header",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "gkMRL",
+                  "name": "poseName",
+                  "fill": "$on-surface",
+                  "content": "Neck Stretch",
+                  "fontFamily": "Inter",
+                  "fontSize": 24,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "fUSFe",
+                  "name": "routineProgress",
+                  "fill": "#757575",
+                  "content": "Pose 1 of 12",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "mN8eG",
+                  "name": "totalTimeRemaining",
+                  "fill": "#000000B3",
+                  "content": "12:30",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
             }
           ]
         },
         {
           "type": "frame",
-          "id": "I1vnH",
+          "id": "vtF0G",
           "name": "mainArea",
           "width": "fill_container",
-          "height": 69,
+          "height": 110,
           "layout": "vertical",
           "gap": 40,
           "justifyContent": "center",
@@ -108,6 +173,7 @@
           "id": "F3JVM",
           "name": "Buttons",
           "width": "fill_container",
+          "height": 60,
           "layout": "vertical",
           "gap": 16,
           "justifyContent": "center",
@@ -200,39 +266,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "type": "frame",
-              "id": "seBtn",
-              "name": "Settings Button",
-              "width": 140,
-              "height": 48,
-              "fill": "#E0E0E0",
-              "cornerRadius": 24,
-              "gap": 8,
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon",
-                  "id": "seIcon",
-                  "width": 24,
-                  "height": 24,
-                  "icon": "settings",
-                  "library": "lucide",
-                  "fill": "$on-surface"
-                },
-                {
-                  "type": "text",
-                  "id": "seTxt",
-                  "name": "Settings Text",
-                  "fill": "$on-surface",
-                  "content": "Settings",
-                  "fontFamily": "Inter",
-                  "fontSize": 14,
-                  "fontWeight": "bold"
-                }
-              ]
             }
           ]
         }
@@ -241,11 +274,11 @@
     {
       "type": "frame",
       "id": "gKPxE",
-      "x": 739,
-      "y": 0,
-      "name": "Settings Screen",
+      "x": 740,
+      "y": 1962,
+      "name": "OBSOLETE Settings Screen",
       "width": 360,
-      "height": 640,
+      "height": 719,
       "fill": {
         "type": "gradient",
         "gradientType": "linear",
@@ -665,11 +698,11 @@
     {
       "type": "frame",
       "id": "B4xiq",
-      "x": 1774,
-      "y": 0,
+      "x": 237,
+      "y": 955,
       "name": "Settings - Other",
       "width": 360,
-      "height": 640,
+      "height": 720,
       "fill": {
         "type": "gradient",
         "gradientType": "linear",
@@ -708,92 +741,6 @@
               "fontFamily": "Inter",
               "fontSize": 24,
               "fontWeight": "normal"
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "K651hx",
-          "name": "tabs",
-          "width": "fill_container",
-          "height": 48,
-          "fill": {
-            "type": "color",
-            "color": "#FFF3E0",
-            "enabled": false
-          },
-          "stroke": "#E0E0E0",
-          "strokeWidth": {
-            "bottom": 1
-          },
-          "children": [
-            {
-              "type": "frame",
-              "id": "bSDPi",
-              "name": "tab1",
-              "width": "fill_container",
-              "height": "fill_container",
-              "fill": {
-                "type": "color",
-                "color": "#E0E0E0",
-                "enabled": false
-              },
-              "layout": "vertical",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "z5cYl4",
-                  "name": "tab1Text",
-                  "fill": "#666666",
-                  "content": "Poses",
-                  "fontFamily": "Inter",
-                  "fontSize": 14,
-                  "fontWeight": "700"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "hXHco",
-              "name": "tab2",
-              "width": "fill_container",
-              "height": "fill_container",
-              "fill": {
-                "type": "color",
-                "color": "$primary",
-                "enabled": false
-              },
-              "layout": "vertical",
-              "padding": [
-                10,
-                0,
-                0,
-                0
-              ],
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "Ma8er",
-                  "name": "tab2Text",
-                  "fill": "$primary",
-                  "content": "Other",
-                  "fontFamily": "Inter",
-                  "fontSize": 14,
-                  "fontWeight": "700"
-                },
-                {
-                  "type": "frame",
-                  "id": "r4tGaG",
-                  "name": "Other Indicator",
-                  "width": "fill_container",
-                  "height": 3,
-                  "fill": "$primary"
-                }
-              ]
             }
           ]
         },
@@ -889,11 +836,11 @@
     {
       "type": "frame",
       "id": "HGDgj",
-      "x": 1266,
+      "x": 694,
       "y": 0,
       "name": "Edit Pose Screen",
       "width": 360,
-      "height": 640,
+      "height": 720,
       "fill": {
         "type": "gradient",
         "gradientType": "linear",
@@ -1174,11 +1121,11 @@
     {
       "type": "frame",
       "id": "j8OESd",
-      "x": 335,
-      "y": -932,
+      "x": 694,
+      "y": -916,
       "name": "Active Routine Screen",
       "width": 360,
-      "height": 640,
+      "height": 720,
       "fill": {
         "type": "gradient",
         "gradientType": "linear",
@@ -1202,6 +1149,48 @@
       "gap": 24,
       "padding": 24,
       "children": [
+        {
+          "type": "frame",
+          "id": "gMOlj",
+          "name": "header",
+          "width": "fill_container",
+          "gap": 12,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "PwJXm",
+              "name": "Back Button",
+              "width": 48,
+              "height": 48,
+              "fill": "#E0E0E0",
+              "cornerRadius": 24,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "Y97V6k",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "arrow_back",
+                  "library": "Material Symbols Rounded",
+                  "fill": "$on-surface"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "ogyrS",
+              "name": "poseName",
+              "fill": "$on-surface",
+              "content": "My Routine Name",
+              "fontFamily": "Inter",
+              "fontSize": 24,
+              "fontWeight": "normal"
+            }
+          ]
+        },
         {
           "type": "frame",
           "id": "rmGJl",
@@ -1277,7 +1266,7 @@
           "id": "Nw3o0",
           "name": "mainArea",
           "width": "fill_container",
-          "height": 71,
+          "height": 110,
           "layout": "vertical",
           "gap": 40,
           "justifyContent": "center",
@@ -1313,7 +1302,7 @@
           "id": "tkeU5",
           "name": "controls",
           "width": 311,
-          "height": 78,
+          "height": 67,
           "gap": 40,
           "padding": 20,
           "justifyContent": "center",
@@ -1367,19 +1356,1073 @@
       ]
     },
     {
-      "type": "rectangle",
-      "id": "DdQpJ",
-      "x": -713,
-      "y": -1503,
-      "name": "App Logo",
+      "type": "frame",
+      "id": "A4KUc",
+      "x": -222,
+      "y": -1706,
+      "name": "Routines Home",
+      "width": 360,
+      "height": 720,
       "fill": {
-        "type": "image",
+        "type": "gradient",
+        "gradientType": "linear",
         "enabled": true,
-        "url": "app-icon.png",
-        "mode": "fill"
+        "rotation": 180,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#FFF3E0",
+            "position": 0
+          },
+          {
+            "color": "#FFCCBC",
+            "position": 1
+          }
+        ]
       },
-      "width": 445,
-      "height": 445
+      "layout": "vertical",
+      "gap": 20,
+      "padding": [
+        30,
+        20
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "UwsPD",
+          "name": "TopBar",
+          "width": "fill_container",
+          "gap": 12,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "sf5qW",
+              "name": "Header",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "jol98",
+                  "name": "AppTitle",
+                  "fill": "$on-surface",
+                  "content": "Stretchie",
+                  "fontFamily": "Inter",
+                  "fontSize": 26,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "M22mf7",
+                  "name": "Tagline",
+                  "fill": "#757575",
+                  "content": "Choose a routine to begin",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "V91QyS",
+              "name": "Settings Button",
+              "width": 126,
+              "height": 43,
+              "fill": "#E0E0E0",
+              "cornerRadius": 24,
+              "gap": 8,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "NpZOo",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "settings",
+                  "library": "lucide",
+                  "fill": "$on-surface"
+                },
+                {
+                  "type": "text",
+                  "id": "yfq89",
+                  "name": "Settings Text",
+                  "fill": "$on-surface",
+                  "content": "Settings",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "bold"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "N1ZYo",
+          "name": "SectionRow",
+          "width": "fill_container",
+          "gap": 8,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "PVq8U",
+              "name": "SectionTitle",
+              "fill": "$on-surface",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "My Routines",
+              "fontFamily": "Inter",
+              "fontSize": 17,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "XJYek",
+          "name": "RoutineList",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "frame",
+              "id": "PO88j",
+              "name": "Quick Morning Card",
+              "width": "fill_container",
+              "fill": "#FFF8E1",
+              "cornerRadius": 16,
+              "gap": 12,
+              "padding": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "tE4b4",
+                  "name": "IconBg",
+                  "width": 44,
+                  "height": 44,
+                  "fill": "#FFF3CD",
+                  "cornerRadius": 22,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "RAQaQ",
+                      "name": "RoutineIcon",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "wb_sunny",
+                      "library": "Material Symbols Rounded",
+                      "fill": "#FF8008"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "s0wQpk",
+                  "name": "Info",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "L06CO",
+                      "name": "RoutineName",
+                      "fill": "$on-surface",
+                      "content": "Quick Morning",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "o9tg5",
+                      "name": "RoutineMeta",
+                      "fill": "#757575",
+                      "content": "3 poses  •  ~5 min",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "g2V666",
+                  "name": "MoreBtn",
+                  "width": 32,
+                  "height": 32,
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "nNM5M",
+                      "name": "MoreIcon",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "more_vert",
+                      "library": "Material Symbols Rounded",
+                      "fill": "#9E9E9E"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Uj1jG",
+                  "name": "PlayBtn",
+                  "width": 44,
+                  "height": 44,
+                  "fill": "$primary",
+                  "cornerRadius": 22,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "zIvOH",
+                      "name": "PlayIcon",
+                      "width": 22,
+                      "height": 22,
+                      "icon": "play_arrow",
+                      "library": "Material Symbols Rounded",
+                      "fill": "$on-primary"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "rx5Zz",
+              "name": "Full Body Stretch Card",
+              "width": "fill_container",
+              "fill": "#FFF8E1",
+              "cornerRadius": 16,
+              "gap": 12,
+              "padding": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "m9U9P",
+                  "name": "IconBg",
+                  "width": 44,
+                  "height": 44,
+                  "fill": "#FFE0B2",
+                  "cornerRadius": 22,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "Q4Kryj",
+                      "name": "RoutineIcon",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "accessibility",
+                      "library": "Material Symbols Rounded",
+                      "fill": "#FF8008"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "S3dv7",
+                  "name": "Info",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "VntoJ",
+                      "name": "RoutineName",
+                      "fill": "$on-surface",
+                      "content": "Full Body Stretch",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "f5HFD",
+                      "name": "RoutineMeta",
+                      "fill": "#757575",
+                      "content": "8 poses  •  ~12 min",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "SQXrb",
+                  "name": "MoreBtn",
+                  "width": 32,
+                  "height": 32,
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "SsHJQ",
+                      "name": "MoreIcon",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "more_vert",
+                      "library": "Material Symbols Rounded",
+                      "fill": "#9E9E9E"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "y0ubka",
+                  "name": "PlayBtn",
+                  "width": 44,
+                  "height": 44,
+                  "fill": "$primary",
+                  "cornerRadius": 22,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "T7bj0G",
+                      "name": "PlayIcon",
+                      "width": 22,
+                      "height": 22,
+                      "icon": "play_arrow",
+                      "library": "Material Symbols Rounded",
+                      "fill": "$on-primary"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "OjEVQ",
+              "name": "Wind Down Card",
+              "width": "fill_container",
+              "fill": "#FFF8E1",
+              "cornerRadius": 16,
+              "gap": 12,
+              "padding": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ap9Q2",
+                  "name": "IconBg",
+                  "width": 44,
+                  "height": 44,
+                  "fill": "#E1F5FE",
+                  "cornerRadius": 22,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "uULEP",
+                      "name": "RoutineIcon",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "bedtime",
+                      "library": "Material Symbols Rounded",
+                      "fill": "#2196F3"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "V3zYJg",
+                  "name": "Info",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gBdtH",
+                      "name": "RoutineName",
+                      "fill": "$on-surface",
+                      "content": "Wind Down",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "f1OTIN",
+                      "name": "RoutineMeta",
+                      "fill": "#757575",
+                      "content": "5 poses  •  ~8 min",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "j5sWl",
+                  "name": "MoreBtn",
+                  "width": 32,
+                  "height": 32,
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "Kxjim",
+                      "name": "MoreIcon",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "more_vert",
+                      "library": "Material Symbols Rounded",
+                      "fill": "#9E9E9E"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "iYmEC",
+                  "name": "PlayBtn",
+                  "width": 44,
+                  "height": 44,
+                  "fill": "$primary",
+                  "cornerRadius": 22,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "kk0oF",
+                      "name": "PlayIcon",
+                      "width": 22,
+                      "height": 22,
+                      "icon": "play_arrow",
+                      "library": "Material Symbols Rounded",
+                      "fill": "$on-primary"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "dyRg1",
+          "name": "Spacer",
+          "width": "fill_container",
+          "height": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "nJuxe",
+          "name": "CreateBtn",
+          "width": "fill_container",
+          "height": 52,
+          "fill": "#E0E0E0",
+          "cornerRadius": 26,
+          "gap": 8,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "e5ty5",
+              "name": "CreateIcon",
+              "width": 18,
+              "height": 18,
+              "icon": "add_circle",
+              "library": "Material Symbols Rounded",
+              "fill": "#616161"
+            },
+            {
+              "type": "text",
+              "id": "a2nEO",
+              "name": "CreateLabel",
+              "fill": "#616161",
+              "content": "Create New Routine",
+              "fontFamily": "Inter",
+              "fontSize": 15,
+              "fontWeight": "700"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "XbsYJ",
+      "x": 237,
+      "y": 0,
+      "name": "Create Routine",
+      "width": 360,
+      "height": 720,
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 180,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#FFF3E0",
+            "position": 0
+          },
+          {
+            "color": "#FFCCBC",
+            "position": 1
+          }
+        ]
+      },
+      "layout": "vertical",
+      "gap": 24,
+      "padding": 24,
+      "children": [
+        {
+          "type": "frame",
+          "id": "KRdYW",
+          "name": "HeaderRow",
+          "width": "fill_container",
+          "gap": 12,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "K2FWhQ",
+              "name": "BackBtn",
+              "width": 24,
+              "height": 24,
+              "icon": "arrow_back",
+              "library": "Material Symbols Rounded",
+              "fill": "$on-surface"
+            },
+            {
+              "type": "text",
+              "id": "jMh46",
+              "name": "HeaderTitle",
+              "fill": "$on-surface",
+              "content": "New Routine",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "xAzOm",
+          "name": "NameSection",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "children": [
+            {
+              "type": "text",
+              "id": "aH5sb",
+              "name": "NameLabel",
+              "fill": "#757575",
+              "content": "Routine Name",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "iSuJQ",
+              "name": "NameInput",
+              "width": "fill_container",
+              "height": 52,
+              "fill": "#FFF8E1",
+              "cornerRadius": 12,
+              "gap": 8,
+              "padding": [
+                0,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "SedYw",
+                  "name": "NameValue",
+                  "fill": "$on-surface",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Morning Stretch",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "icon",
+                  "id": "I7Ixr",
+                  "name": "EditIcon",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "edit",
+                  "library": "Material Symbols Rounded",
+                  "fill": "#BDBDBD"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "k4RwVM",
+          "name": "PosesHeader",
+          "width": "fill_container",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "HP7Ln",
+              "name": "PosesTitle",
+              "fill": "$on-surface",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Poses",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "yae2Q",
+              "name": "CountBadge",
+              "fill": "#FFE0B2",
+              "cornerRadius": 12,
+              "padding": [
+                4,
+                10
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "yzwvd",
+                  "name": "CountText",
+                  "fill": "$primary",
+                  "content": "3 selected",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "HniYK",
+          "name": "PoseList",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "children": [
+            {
+              "type": "frame",
+              "id": "wvCr8",
+              "name": "Neck Stretch Row",
+              "width": "fill_container",
+              "fill": "#FFF8E1",
+              "cornerRadius": 12,
+              "gap": 12,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "TfIWW",
+                  "name": "PoseIconBg",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "#FFE0B2",
+                  "cornerRadius": 20,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "l3HSL",
+                      "name": "PoseIcon",
+                      "width": 22,
+                      "height": 22,
+                      "icon": "accessibility",
+                      "library": "Material Symbols Rounded",
+                      "fill": "$primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "W7iRxf",
+                  "name": "PoseInfo",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YDb26",
+                      "name": "PoseName",
+                      "fill": "$on-surface",
+                      "content": "Neck Stretch",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "vLFMZ",
+                      "name": "PoseDur",
+                      "fill": "#757575",
+                      "content": "30s • 10s interval",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "rR2tW",
+                  "name": "Toggle",
+                  "width": 40,
+                  "height": 24,
+                  "fill": "#E0E0E0",
+                  "cornerRadius": 12,
+                  "padding": 2,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "JYt7o",
+                      "name": "Thumb",
+                      "width": 20,
+                      "height": 20,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 10
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Ot4Zk",
+              "name": "Shoulder Roll Row",
+              "width": "fill_container",
+              "fill": "#FFF8E1",
+              "cornerRadius": 12,
+              "gap": 12,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "TCWvT",
+                  "name": "PoseIconBg",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "#E8F5E9",
+                  "cornerRadius": 20,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "lr15b",
+                      "name": "PoseIcon",
+                      "width": 22,
+                      "height": 22,
+                      "icon": "fitness_center",
+                      "library": "Material Symbols Rounded",
+                      "fill": "#4CAF50"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "dQM0p",
+                  "name": "PoseInfo",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GcbhL",
+                      "name": "PoseName",
+                      "fill": "$on-surface",
+                      "content": "Shoulder Roll",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "DY9EP",
+                      "name": "PoseDur",
+                      "fill": "#757575",
+                      "content": "45s • 15s interval",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "FhKyS",
+                  "name": "Toggle",
+                  "width": 40,
+                  "height": 24,
+                  "fill": "#4CAF50",
+                  "cornerRadius": 12,
+                  "padding": 2,
+                  "justifyContent": "end",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "nEMNY",
+                      "name": "Thumb",
+                      "width": 20,
+                      "height": 20,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 10
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "YLhnA",
+              "name": "Forward Fold Row",
+              "width": "fill_container",
+              "fill": "#FFF8E1",
+              "cornerRadius": 12,
+              "gap": 12,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "glxzI",
+                  "name": "PoseIconBg",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "#E1F5FE",
+                  "cornerRadius": 20,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "O8xZa",
+                      "name": "PoseIcon",
+                      "width": 22,
+                      "height": 22,
+                      "icon": "directions_run",
+                      "library": "Material Symbols Rounded",
+                      "fill": "#2196F3"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "PQsiK",
+                  "name": "PoseInfo",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "nNRvJ",
+                      "name": "PoseName",
+                      "fill": "$on-surface",
+                      "content": "Forward Fold",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "l3e65n",
+                      "name": "PoseDur",
+                      "fill": "#757575",
+                      "content": "60s • 20s interval",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Wrkin",
+                  "name": "Toggle",
+                  "width": 40,
+                  "height": 24,
+                  "fill": "#4CAF50",
+                  "cornerRadius": 12,
+                  "padding": 2,
+                  "justifyContent": "end",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "qBNWe",
+                      "name": "Thumb",
+                      "width": 20,
+                      "height": 20,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 10
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "lZmP9",
+              "name": "Chest Opener Row",
+              "width": "fill_container",
+              "fill": "#FFF8E1",
+              "cornerRadius": 12,
+              "gap": 12,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "yupMX",
+                  "name": "PoseIconBg",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "#F3E5F5",
+                  "cornerRadius": 20,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "I6KtG",
+                      "name": "PoseIcon",
+                      "width": 22,
+                      "height": 22,
+                      "icon": "accessibility",
+                      "library": "Material Symbols Rounded",
+                      "fill": "#9C27B0"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "nIHap",
+                  "name": "PoseInfo",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "XJ0HE",
+                      "name": "PoseName",
+                      "fill": "$on-surface",
+                      "content": "Chest Opener",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "YLoIE",
+                      "name": "PoseDur",
+                      "fill": "#757575",
+                      "content": "30s • 10s interval",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "wqtTW",
+                  "name": "Toggle",
+                  "width": 40,
+                  "height": 24,
+                  "fill": "#E0E0E0",
+                  "cornerRadius": 12,
+                  "padding": 2,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "HB5EW",
+                      "name": "Thumb",
+                      "width": 20,
+                      "height": 20,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 10
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "u9frsP",
+          "name": "SaveBtn",
+          "width": "fill_container",
+          "height": 52,
+          "fill": "$primary",
+          "cornerRadius": 26,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "YCI4c",
+              "name": "SaveLabel",
+              "fill": "$on-primary",
+              "content": "Save Routine",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "700"
+            }
+          ]
+        }
+      ]
     }
   ],
   "variables": {

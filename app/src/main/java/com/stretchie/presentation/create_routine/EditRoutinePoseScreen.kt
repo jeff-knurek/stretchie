@@ -1,4 +1,4 @@
-package com.stretchie.presentation.settings
+package com.stretchie.presentation.create_routine
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -15,43 +15,33 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import com.stretchie.data.repository.PoseRepository
 import com.stretchie.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EditPoseScreen(
+fun EditRoutinePoseScreen(
     poseId: String,
-    viewModel: SettingsViewModel,
+    initialDuration: Int,
+    initialIntervalCount: Int,
     poseRepository: PoseRepository,
-    onNavigateBack: () -> Unit
+    navController: NavController
 ) {
     val pose = remember(poseId) { poseRepository.getPoseById(poseId) }
-    val settings by viewModel.userSettings.collectAsState()
-    
-    val override = settings.poseOverridesMap[poseId]
-    var duration by remember(override) { 
-        mutableIntStateOf(if (override != null && override.duration > 0) override.duration else pose?.defaultDurationSeconds ?: 30) 
-    }
-    var intervalCount by remember(override) { 
-        mutableIntStateOf(if (override != null && override.intervalCount > 0) override.intervalCount else pose?.defaultIntervalCount ?: 1)
-    }
-    val isSkipped = override?.getIsSkipped() ?: false
+    var duration by remember { mutableIntStateOf(if (initialDuration > 0) initialDuration else pose?.defaultDurationSeconds ?: 30) }
+    var intervalCount by remember { mutableIntStateOf(if (initialIntervalCount > 0) initialIntervalCount else pose?.defaultIntervalCount ?: 1) }
 
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
-            .background(
-                Brush.linearGradient(
-                    colors = listOf(LightPeach, DarkPeach)
-                )
-            ),
+            .background(Brush.linearGradient(colors = listOf(LightPeach, DarkPeach))),
         topBar = {
             TopAppBar(
-                title = { Text(pose?.name ?: "Edit Pose", fontWeight = FontWeight.Bold) },
+                title = { Text("Edit ${pose?.name ?: "Pose"}", fontWeight = FontWeight.Bold) },
                 navigationIcon = {
-                    IconButton(onClick = onNavigateBack) {
+                    IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = "Back")
                     }
                 },
@@ -78,7 +68,6 @@ fun EditPoseScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
-            // Duration Controller
             Surface(
                 shape = RoundedCornerShape(16.dp),
                 color = Surface,
@@ -88,7 +77,12 @@ fun EditPoseScreen(
                     modifier = Modifier.padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text("Duration (Seconds)", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = OnSurface)
+                    Text(
+                        "Duration (Seconds)",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = OnSurface
+                    )
                     Spacer(modifier = Modifier.height(16.dp))
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -99,7 +93,12 @@ fun EditPoseScreen(
                             colors = ButtonDefaults.buttonColors(containerColor = LightPeach)
                         ) { Text("-", color = OnSurface) }
                         Spacer(modifier = Modifier.width(24.dp))
-                        Text("$duration", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold, color = OrangePrimary)
+                        Text(
+                            "$duration",
+                            style = MaterialTheme.typography.headlineMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = OrangePrimary
+                        )
                         Spacer(modifier = Modifier.width(24.dp))
                         Button(
                             onClick = { duration += 5 },
@@ -109,7 +108,6 @@ fun EditPoseScreen(
                 }
             }
 
-            // Interval Controller
             Surface(
                 shape = RoundedCornerShape(16.dp),
                 color = Surface,
@@ -119,7 +117,12 @@ fun EditPoseScreen(
                     modifier = Modifier.padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text("Interval Count", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = OnSurface)
+                    Text(
+                        "Interval Count",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = OnSurface
+                    )
                     Spacer(modifier = Modifier.height(16.dp))
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -130,7 +133,12 @@ fun EditPoseScreen(
                             colors = ButtonDefaults.buttonColors(containerColor = LightPeach)
                         ) { Text("-", color = OnSurface) }
                         Spacer(modifier = Modifier.width(24.dp))
-                        Text("$intervalCount", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold, color = OrangePrimary)
+                        Text(
+                            "$intervalCount",
+                            style = MaterialTheme.typography.headlineMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = OrangePrimary
+                        )
                         Spacer(modifier = Modifier.width(24.dp))
                         Button(
                             onClick = { intervalCount += 1 },
@@ -146,7 +154,7 @@ fun EditPoseScreen(
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(300.dp)
+                    .height(240.dp)
                     .clip(RoundedCornerShape(16.dp))
                     .background(Color(0xFFEAEAEA))
             )
@@ -155,8 +163,12 @@ fun EditPoseScreen(
 
             Button(
                 onClick = {
-                    viewModel.toggleSkipPose(poseId, duration, intervalCount, isSkipped)
-                    onNavigateBack()
+                    navController.previousBackStackEntry?.savedStateHandle?.apply {
+                        set("result_pose_id", poseId)
+                        set("result_duration", duration)
+                        set("result_interval_count", intervalCount)
+                    }
+                    navController.popBackStack()
                 },
                 modifier = Modifier
                     .fillMaxWidth()
