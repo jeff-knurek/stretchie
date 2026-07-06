@@ -18,18 +18,18 @@ class PoseRepositoryTest {
     @Test
     fun `getAllPoses returns expected list`() {
         val poses = repository.getAllPoses()
-        assertEquals(2, poses.size)
-        assertEquals("leg_extension", poses[0].id)
-        assertEquals("Leg Extension", poses[0].name)
-        assertEquals("quad-stretch", poses[1].id)
-        assertEquals("Quad Stretch", poses[1].name)
+        assertEquals(19, poses.size)
+        assertEquals("back_stretch", poses[0].id)
+        assertEquals("Back Stretch", poses[0].name)
+        assertEquals("it_band", poses[18].id)
+        assertEquals("It Band", poses[18].name)
     }
 
     @Test
     fun `getPoseById returns correct pose for valid ID`() {
-        val pose = repository.getPoseById("leg_extension")
+        val pose = repository.getPoseById("back_stretch")
         assertNotNull(pose)
-        assertEquals("Leg Extension", pose?.name)
+        assertEquals("Back Stretch", pose?.name)
     }
 
     @Test
