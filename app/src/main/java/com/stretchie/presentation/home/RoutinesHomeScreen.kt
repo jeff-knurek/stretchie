@@ -40,7 +40,7 @@ fun RoutinesHomeScreen(
     ) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 24.dp),
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 55.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             item {
