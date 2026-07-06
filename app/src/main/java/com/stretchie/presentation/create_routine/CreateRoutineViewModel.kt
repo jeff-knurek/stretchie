@@ -27,7 +27,11 @@ class CreateRoutineViewModel(
     private val _state = MutableStateFlow(CreateRoutineState())
     val state: StateFlow<CreateRoutineState> = _state.asStateFlow()
 
+    private var hasLoadedRoutine = false
+
     fun loadRoutine(routineId: String) {
+        if (hasLoadedRoutine) return
+        hasLoadedRoutine = true
         viewModelScope.launch {
             val routines = settingsRepository.getRoutinesFlow().first()
             val routine = routines.find { it.id == routineId } ?: return@launch
