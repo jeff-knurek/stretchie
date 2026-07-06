@@ -238,4 +238,99 @@ class RoutineViewModelTest {
         val total = viewModel.getTotalRemainingTime()
         assertEquals(10, total)
     }
+
+    // getDurationForPose / getIntervalCountForPose fallbacks
+
+    @Test
+    fun `custom duration of zero falls back to pose default`() = runTest {
+        val routine = Routine(
+            id = "r1",
+            name = "Test",
+            poseSettings = mapOf(
+                "pose1" to RoutinePoseSettings(included = true, duration = 0)
+            )
+        )
+        routinesFlow.value = listOf(routine)
+
+        createViewModel(routineId = "r1")
+        testDispatcher.scheduler.advanceUntilIdle()
+
+        assertEquals(10, viewModel.state.value.secondsRemaining)
+    }
+
+    @Test
+    fun `custom intervalCount of zero falls back to pose default`() = runTest {
+        val mockPoses = listOf(
+            Pose(id = "pose1", name = "Pose 1", imageRes = 1, defaultDurationSeconds = 10, defaultIntervalCount = 3),
+            Pose(id = "pose2", name = "Pose 2", imageRes = 2, defaultDurationSeconds = 10)
+        )
+        poseRepository = mock { on { getAllPoses() } doReturn mockPoses }
+
+        val routine = Routine(
+            id = "r1",
+            name = "Test",
+            poseSettings = mapOf(
+                "pose1" to RoutinePoseSettings(included = true, intervalCount = 0)
+            )
+        )
+        routinesFlow.value = listOf(routine)
+
+        createViewModel(routineId = "r1")
+        testDispatcher.scheduler.advanceUntilIdle()
+
+        assertEquals(3, viewModel.state.value.currentIntervalCount)
+    }
+
+    // startRoutine no-ops
+
+    @Test
+    fun `togglePlayPause is noop when routine is completed`() = runTest {
+        createViewModel()
+        testDispatcher.scheduler.advanceUntilIdle()
+
+        viewModel.nextPose()
+        viewModel.nextPose()
+        assertTrue(viewModel.state.value.isCompleted)
+
+        viewModel.togglePlayPause()
+
+        assertFalse(viewModel.state.value.isRunning)
+    }
+
+    @Test
+    fun `togglePlayPause is noop when no poses are loaded`() = runTest {
+        val routine = Routine(
+            id = "r1",
+            name = "Test",
+            poseSettings = mapOf(
+                "pose1" to RoutinePoseSettings(included = false),
+                "pose2" to RoutinePoseSettings(included = false)
+            )
+        )
+        routinesFlow.value = listOf(routine)
+
+        createViewModel(routineId = "r1")
+        testDispatcher.scheduler.advanceUntilIdle()
+
+        assertTrue(viewModel.state.value.poses.isEmpty())
+
+        viewModel.togglePlayPause()
+
+        assertFalse(viewModel.state.value.isRunning)
+    }
+
+    // previousPose boundary
+
+    @Test
+    fun `previousPose at first pose is noop`() = runTest {
+        createViewModel()
+        testDispatcher.scheduler.advanceUntilIdle()
+
+        assertEquals(0, viewModel.state.value.currentPoseIndex)
+
+        viewModel.previousPose()
+
+        assertEquals(0, viewModel.state.value.currentPoseIndex)
+        assertEquals(10, viewModel.state.value.secondsRemaining)
+    }
 }
