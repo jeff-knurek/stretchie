@@ -19,6 +19,9 @@ output.json
 .kotlin/
 *.kotlin_module
 
+# Heap dumps
+*.hprof
+
 # macOS
 .DS_Store
 
